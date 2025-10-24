@@ -33,7 +33,8 @@ My name is Cosmin Andreiescu and I am an aspiring web developer that is eager to
 - Coursera — Introduction to Front-End Development, Programming with JavaScript, HTML and CSS in depth, Version Control, React Basics
 
 ## Let’s Connect
-**LinkedIn:** https://www.linkedin.com/in/cosmin-andreiescu-08399b101  
-**Email:** cosmin.and117@gmail.com
-**Goodreads:** https://www.goodreads.com/user/show/147340655-cosmin-andreiescu
-Feel free to explore my repositories — more projects are coming soon.
+- **LinkedIn:** https://www.linkedin.com/in/cosmin-andreiescu-08399b101  
+- **Email:** cosmin.and117@gmail.com
+- **Goodreads:** https://www.goodreads.com/user/show/147340655-cosmin-andreiescu
+
+ Feel free to explore my repositories — more projects are coming soon.
