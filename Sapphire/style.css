@@ -35,6 +35,7 @@ h5,
 h6 {
   font-family: "Cormorant Garamond", serif;
   line-height: 1.9;
+  transition: all 1s;
 }
 h1 {
   font-weight: 6rem;
@@ -43,6 +44,7 @@ p {
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   color: var(--color-secondary);
+  transition: all 1s;
 }
 
 .container {
@@ -124,6 +126,25 @@ p {
 .fade {
   opacity: 0;
   transform: translateY(8rem);
+}
+
+.fade-in {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8rem);
+}
+
+.text-in {
+  transform: translateY(-4rem);
+  height: 0;
+  opacity: 0;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 /* HEADER */
@@ -286,6 +307,7 @@ p {
   color: #e3fafc;
   transition: background-color 0.3s;
   margin-top: 5rem;
+  transition: all 1s;
 }
 
 .cta:hover {
@@ -415,6 +437,14 @@ p {
   cursor: pointer;
   letter-spacing: 1.6px;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.product__price:hover {
+  background-color: var(--color-primary-darker);
+}
+.product__price:active {
+  background-color: var(--color-primary-lighter);
 }
 
 /* CATEGORIES */
@@ -887,19 +917,6 @@ Large desktops: 1200px
   .about-us--img {
     max-width: 100%;
   }
-}
-
-.fade-in {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(4rem);
-}
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-  height: 0;
-  width: 0;
 }
 
 .error {

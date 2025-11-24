@@ -239,7 +239,10 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
 // STICKY NAV
 const navBar = document.querySelector(".nav__bar");
 const hero = document.querySelector(".hero");
-const obsCallBack = function (entries, observer) {
+const textIn = document.querySelectorAll(".text-in");
+console.log(textIn);
+// Callback Functions
+const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) navBar.classList.add("nav__fixed");
     if (entry.isIntersecting || entry.rootBounds.width <= 522)
@@ -247,13 +250,30 @@ const obsCallBack = function (entries, observer) {
   });
 };
 
-const headerObserver = new IntersectionObserver(obsCallBack, {
+const obstextInCB = function (entries, observer) {
+  entries.forEach((entry) => {
+    console.log(entry);
+    if (entry.isIntersecting) {
+      console.log(entry.target);
+      entry.target.classList.remove("text-in");
+    }
+  });
+};
+
+// IO Instances
+
+const headerObserver = new IntersectionObserver(obsNavCB, {
+  root: null,
+  threshold: 0,
+});
+
+const textObserver = new IntersectionObserver(obstextInCB, {
   root: null,
   threshold: 0,
 });
 
 headerObserver.observe(hero);
-
+textIn.forEach((el) => textObserver.observe(el));
 document
   .querySelector(".header__logo")
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
