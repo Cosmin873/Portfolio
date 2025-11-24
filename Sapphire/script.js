@@ -23,13 +23,9 @@ const getEmails = function () {
 getEmails();
 console.log(emailList);
 
-// INTERSECTION OBSERVER API
-
 // SLIDESHOW
 const slideshow = document.querySelector(".slideshow");
 const sliders = document.querySelectorAll(".hero");
-console.log(slideshow, sliders);
-sliders.forEach((el) => console.log(el));
 
 // NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL
 
@@ -139,9 +135,10 @@ products.rings.forEach((el) => {
           />
           <div class="product__information">
           <h4 class="product__title">${el.title}</h4>
-          <ul class="product__material">${el.material.map(
-            (type) => `<li>${type}</li>`
-          )}</ul>
+          <h5 class="product__material-title">Colors:</h5>
+          <ul class="product__material">${el.material
+            .map((type) => `<li>${type}</li>`)
+            .join("")}</ul>
           <p class="product__price">${el.price} EUR</p>
           </div>
         </div>`;
@@ -237,3 +234,26 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
   newsletterInputField.value = "";
   localStorage.setItem("emails", JSON.stringify(emailList));
 });
+
+// INTERSECTION OBSERVER API
+// STICKY NAV
+const navBar = document.querySelector(".nav__bar");
+const hero = document.querySelector(".hero");
+const obsCallBack = function (entries, observer) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) navBar.classList.add("nav__fixed");
+    if (entry.isIntersecting || entry.rootBounds.width <= 522)
+      navBar.classList.remove("nav__fixed");
+  });
+};
+
+const headerObserver = new IntersectionObserver(obsCallBack, {
+  root: null,
+  threshold: 0,
+});
+
+headerObserver.observe(hero);
+
+document
+  .querySelector(".header__logo")
+  .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
