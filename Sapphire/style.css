@@ -147,6 +147,32 @@ p {
   width: 0;
 }
 
+.pos__fixed {
+  position: fixed;
+  top: 0;
+
+  background: linear-gradient(#f4f4f5, #fafafa, #f4f4f5);
+}
+
+.nav__handler {
+  position: fixed;
+  top: 3rem;
+  left: 3rem;
+  background-color: var(--color-primary);
+  z-index: 101;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  padding: 1.5rem 2.4rem;
+  opacity: 0.9;
+}
+
+.nav__hide {
+  transform: translateY(-20rem);
+  opacity: 0;
+  height: 0px;
+  visibility: hidden;
+}
+
 /* HEADER */
 
 .nav__fixed {
@@ -166,7 +192,7 @@ p {
   gap: 3rem;
 
   max-width: 100%;
-
+  transition: all 1s;
   margin: 0 auto;
 }
 
@@ -225,6 +251,7 @@ p {
   grid-template-rows: repeat(1fr 1fr);
   gap: 3rem;
   margin: 0 auto;
+  transition: all 1s;
 }
 .hero-img-main {
   height: 100%;

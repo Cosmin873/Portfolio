@@ -69,7 +69,7 @@ submitContactForm.addEventListener("click", function (e) {
   const elemente = this.closest(".modal")
     .querySelector(".contact__form")
     .querySelectorAll(".contact__input");
-  //console.log(elemente);
+
   elemente.forEach((el) => {
     if (el.value === "") {
       el.style.backgroundColor = "rgba(255, 0, 72, 0.2)";
@@ -240,21 +240,24 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
 const navBar = document.querySelector(".nav__bar");
 const hero = document.querySelector(".hero");
 const textIn = document.querySelectorAll(".text-in");
-console.log(textIn);
+
+const navTriggerBtn = document.querySelector(".nav__handler");
+
 // Callback Functions
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) navBar.classList.add("nav__fixed");
-    if (entry.isIntersecting || entry.rootBounds.width <= 522)
+    if (entry.isIntersecting || entry.rootBounds.width <= 576)
       navBar.classList.remove("nav__fixed");
+    if (!entry.isIntersecting && entry.rootBounds.width <= 921)
+      navTriggerBtn.classList.remove("hidden");
+    if (entry.rootBounds.width > 921) navTriggerBtn.classList.add("hidden");
   });
 };
 
 const obstextInCB = function (entries, observer) {
   entries.forEach((entry) => {
-    console.log(entry);
     if (entry.isIntersecting) {
-      console.log(entry.target);
       entry.target.classList.remove("text-in");
     }
   });
@@ -277,3 +280,18 @@ textIn.forEach((el) => textObserver.observe(el));
 document
   .querySelector(".header__logo")
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
+
+// (function () {
+//   if (window.innerWidth <= 921) {
+//     navTriggerBtn.classList.remove("hidden");
+//     navBar.classList.add("pos__fixed");
+//   }
+//   if (window.innerWidth > 921) {
+//     navTriggerBtn.classList.add("hidden");
+//   }
+// })();
+
+navTriggerBtn.addEventListener("click", function (e) {
+  navBar.classList.toggle("nav__hide");
+  console.log(e, e.target);
+});
