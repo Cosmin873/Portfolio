@@ -164,7 +164,7 @@ products.rings.forEach((el) => {
           <p class="product__price">${el.price} EUR</p>
           </div>
         </div>`;
-  productsDOM.insertAdjacentHTML("beforeend", html);
+  productsDOM.insertAdjacentHTML("afterbegin", html);
 });
 
 let i = 0;
@@ -318,3 +318,37 @@ navTriggerBtn.addEventListener("click", function (e) {
   navBar.classList.toggle("nav__hide");
   navBar.classList.toggle("nav__fixed");
 });
+
+// Bestseller slider
+
+// productsDOM = slider
+const slides = document.querySelectorAll(".product");
+const sliderRightBtn = document.querySelector(".slider__btn-right");
+const sliderLeftBtn = document.querySelector(".slider__btn-left");
+const dotsContainer = document.querySelector(".dots");
+let currentSlide = 1;
+const sliding = function (slide) {
+  slides.forEach((el, i) => {
+    el.style.transform = `translateX(${120 * (i - slide)}%)`;
+  });
+};
+sliding(currentSlide);
+const slidingRight = function () {
+  currentSlide === slides.length - 2 ? (currentSlide = 1) : currentSlide++;
+  sliding(currentSlide);
+};
+
+const slidingLeft = function () {
+  currentSlide === 1 ? (currentSlide = slides.length - 2) : currentSlide--;
+  sliding(currentSlide);
+};
+
+slides.forEach((el) => {
+  dotsContainer.insertAdjacentHTML(
+    "beforeend",
+    `<button class="dot"></button>`
+  );
+});
+
+sliderRightBtn.addEventListener("click", slidingRight);
+sliderLeftBtn.addEventListener("click", slidingLeft);
