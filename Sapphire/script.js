@@ -263,11 +263,13 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
 // Callback Functions
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
-    console.log(entry);
     if (entry.isIntersecting) {
       navBar.classList.remove("nav__fixed");
       navBar.classList.remove("nav__hide");
       navTriggerBtn.classList.add("hidden");
+    }
+    if (!entry.isIntersecting && entry.rootBounds.width < 576) {
+      navBar.classList.add("nav__hide");
     }
     if (!entry.isIntersecting && entry.rootBounds.width >= 576)
       navBar.classList.add("nav__fixed");
