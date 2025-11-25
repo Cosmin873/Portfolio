@@ -12,6 +12,12 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const closeModal = document.querySelector(".close__modal");
 const submitContactForm = document.querySelector(".contact__submit");
+// IntersectionObserver API // Sticky nav
+const navBar = document.querySelector(".nav__bar");
+const hero = document.querySelector(".hero");
+const textIn = document.querySelectorAll(".text-in");
+
+const navTriggerBtn = document.querySelector(".nav__handler");
 
 let emailList = [];
 let formHTML;
@@ -22,6 +28,11 @@ const getEmails = function () {
 };
 getEmails();
 console.log(emailList);
+
+// HELPER FUNCTIONS
+const capitalize = function (input) {
+  return input.at(0).toUpperCase() + input.slice(1);
+};
 
 // SLIDESHOW
 const slideshow = document.querySelector(".slideshow");
@@ -34,6 +45,14 @@ navContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("link__scroll")) {
     const id = e.target.getAttribute("href").slice(1);
     const toTarget = document.querySelector(`.${id}`);
+
+    if (
+      navBar.classList.contains("nav__fixed") &&
+      !navBar.classList.contains("nav__hide")
+    ) {
+      navBar.classList.toggle("nav__hide");
+      navBar.classList.toggle("nav__fixed");
+    }
 
     toTarget.scrollIntoView({ behavior: "smooth" });
   }
@@ -127,17 +146,20 @@ cta.addEventListener("click", () =>
 );
 
 products.rings.forEach((el) => {
-  const html = `<div class="product"> <img
+  const html = `<div class="product"> 
+  <div class="product__img-container">
+<img
             src="${el.url[0]}"
             class="product__img img"
             alt="Wedding rings made of gold"
             data-code="${el.code}"
           />
+  </div>
           <div class="product__information">
           <h4 class="product__title">${el.title}</h4>
           <h5 class="product__material-title">Colors:</h5>
           <ul class="product__material">${el.material
-            .map((type) => `<li>${type}</li>`)
+            .map((type) => `<li>${capitalize(type)}</li>`)
             .join("")}</ul>
           <p class="product__price">${el.price} EUR</p>
           </div>
@@ -237,21 +259,20 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
 
 // INTERSECTION OBSERVER API
 // STICKY NAV
-const navBar = document.querySelector(".nav__bar");
-const hero = document.querySelector(".hero");
-const textIn = document.querySelectorAll(".text-in");
-
-const navTriggerBtn = document.querySelector(".nav__handler");
 
 // Callback Functions
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
-    if (!entry.isIntersecting) navBar.classList.add("nav__fixed");
-    if (entry.isIntersecting || entry.rootBounds.width <= 576)
+    console.log(entry);
+    if (entry.isIntersecting) {
       navBar.classList.remove("nav__fixed");
+      navBar.classList.remove("nav__hide");
+      navTriggerBtn.classList.add("hidden");
+    }
+    if (!entry.isIntersecting && entry.rootBounds.width >= 576)
+      navBar.classList.add("nav__fixed");
     if (!entry.isIntersecting && entry.rootBounds.width <= 921)
       navTriggerBtn.classList.remove("hidden");
-    if (entry.rootBounds.width > 921) navTriggerBtn.classList.add("hidden");
   });
 };
 
@@ -282,16 +303,16 @@ document
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
 
 // (function () {
-//   if (window.innerWidth <= 921) {
-//     navTriggerBtn.classList.remove("hidden");
-//     navBar.classList.add("pos__fixed");
+//   if (window.innerWidth <= 365) {
+//     // navTriggerBtn.classList.remove("hidden");
+//     // navBar.classList.add("pos__fixed");
 //   }
-//   if (window.innerWidth > 921) {
-//     navTriggerBtn.classList.add("hidden");
-//   }
+//   // if (window.innerWidth > 921) {
+//   //   navTriggerBtn.classList.add("hidden");
+//   // }
 // })();
 
 navTriggerBtn.addEventListener("click", function (e) {
   navBar.classList.toggle("nav__hide");
-  console.log(e, e.target);
+  navBar.classList.toggle("nav__fixed");
 });
