@@ -441,7 +441,7 @@ p {
 
 .product {
   max-width: 40rem;
-  height: 60rem;
+
   cursor: pointer;
   border-radius: 9px;
   position: absolute;
@@ -547,12 +547,15 @@ p {
 
 .product__material-title {
   font-size: 2.8rem;
-  color: var(--color-primary-lighter);
+  color: var(--color-primary);
 }
 .product__material {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 3rem;
   padding: 0 2rem;
+  letter-spacing: 1.2px;
+  font-weight: 500;
+  color: var(--color-primary-lighter);
 }
 
 .product__information {

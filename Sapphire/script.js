@@ -346,13 +346,38 @@ const slidesAnimation = function () {
     sliderRightBtn.style.transform = "translate(0, 30%)";
   }
 })();
+let dotId = 0;
+slides.forEach((el) => {
+  dotsContainer.insertAdjacentHTML(
+    "beforeend",
+    `<button class="dot" data-id = "${dotId++}"></button>`
+  );
+});
 
+const activateDot = function () {
+  document.querySelectorAll(".dot").forEach((dot) => {
+    console.log(dot, currentSlide);
+    if (+dot.dataset.id !== currentSlide) dot.style.backgroundColor = "#64b4c5";
+    if (+dot.dataset.id === currentSlide) dot.style.backgroundColor = "#50909e";
+  });
+};
+activateDot();
+
+dotsContainer.addEventListener("click", function (e) {
+  console.log(e.target);
+  if (!e.target.classList.contains("dot")) return;
+  const getDotId = +e.target.dataset.id;
+  currentSlide = getDotId;
+  activateDot();
+  sliding(currentSlide);
+});
 const sliding = function (slide) {
   slides.forEach((el, i, arr) => {
     el.style.transform = `translateX(${120 * (i - slide)}%) scale(0.9)`;
     el.classList.add("shadow-1");
   });
   if (window.innerWidth >= 880) slidesAnimation();
+  activateDot();
 };
 // BRINGING 3 PRODUCTS PER WAVE IN SLIDER
 // let a = 0;
@@ -395,13 +420,6 @@ const slidingLeft = function () {
   currentSlide <= min ? (currentSlide = slides.length - max) : currentSlide--;
   sliding(currentSlide);
 };
-
-slides.forEach((el) => {
-  dotsContainer.insertAdjacentHTML(
-    "beforeend",
-    `<button class="dot"></button>`
-  );
-});
 
 sliderRightBtn.addEventListener("click", slidingRight);
 sliderLeftBtn.addEventListener("click", slidingLeft);
