@@ -627,6 +627,7 @@ p {
   justify-content: center;
   margin-bottom: 3rem;
   color: #64b4c5;
+  text-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .about-us--description {
@@ -644,6 +645,7 @@ p {
 
 .about-us--text {
   flex-direction: column;
+  max-width: 100%;
 }
 
 .about-us--img {
@@ -795,7 +797,9 @@ Large desktops: 1200px
   }
   .section__header {
     padding: 5rem;
-    width: 52rem;
+  }
+  .section__main {
+    padding: 2rem;
   }
 }
 
