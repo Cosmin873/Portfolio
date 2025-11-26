@@ -95,11 +95,13 @@ p {
 .shadow-1 {
   box-shadow: 0 1rem 2.4rem 0 rgba(0, 0, 0, 0.1);
 }
-
+.about-us--text {
+  width: 100%;
+  margin: 0 auto;
+}
 .aligning {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .list {
@@ -416,7 +418,7 @@ p {
 .container-L {
   max-width: 160rem;
   margin: 0 auto;
-  padding: 0 10rem;
+  padding: 2rem 10rem;
 }
 
 .section__2 {
@@ -791,7 +793,7 @@ Large desktops: 1200px
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 576px) {
   .footer .container {
     width: 100%;
   }
@@ -800,6 +802,14 @@ Large desktops: 1200px
   }
   .section__main {
     padding: 2rem;
+  }
+  .about-us--text {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .aligning {
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
