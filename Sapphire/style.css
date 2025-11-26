@@ -419,10 +419,6 @@ p {
   padding: 0 10rem;
 }
 
-.slider {
-  position: relative;
-}
-
 .section__2 {
   padding: 0;
   margin: 0;
@@ -439,6 +435,9 @@ p {
   align-items: center;
   justify-content: center;
 }
+.slider {
+  position: relative;
+}
 
 .product {
   max-width: 40rem;
@@ -451,12 +450,8 @@ p {
 
 /* BESTSELLER SLIDER */
 
-.selected__slide {
-}
-
 .slider__btn {
   position: absolute;
-  top: 50%;
 
   padding: 1rem 2rem;
   border-radius: 50px;
@@ -466,6 +461,13 @@ p {
   font-size: 14rem;
   cursor: pointer;
   transition: all 0.3s;
+}
+
+.slider__btn-top {
+  top: 50%;
+}
+.slider__btn-bottom {
+  bottom: 0;
 }
 
 .slider__btn:hover {

@@ -330,6 +330,22 @@ const slidesAnimation = function () {
   slides[currentSlide].classList.add("shadow");
   slides[currentSlide].style.transform = "scale(1.1)";
 };
+(function () {
+  if (window.innerWidth < 576) {
+    document.querySelector(".container-L").style.width = "100%";
+    document.querySelector(".container-L").style.padding = "0";
+    // document.querySelector(".slider__btn").style.fontSize = "2rem";
+
+    sliderLeftBtn.style.fontSize = "8rem";
+    sliderRightBtn.style.fontSize = "8rem";
+    sliderLeftBtn.classList.remove("slider__btn-top");
+    sliderLeftBtn.classList.add("slider__btn-bottom");
+    sliderRightBtn.classList.remove("slider__btn-top");
+    sliderRightBtn.classList.add("slider__btn-bottom");
+    sliderLeftBtn.style.transform = "translate(0, 30%)";
+    sliderRightBtn.style.transform = "translate(0, 30%)";
+  }
+})();
 
 const sliding = function (slide) {
   slides.forEach((el, i, arr) => {
