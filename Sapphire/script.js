@@ -144,9 +144,9 @@ const newsletterPopup = function (situation) {
 cta.addEventListener("click", () =>
   document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
 );
-
+let id = 0;
 products.rings.forEach((el) => {
-  const html = `<div class="product"> 
+  const html = `<div class="product" data-id = "${id++}"> 
   <div class="product__img-container">
 <img
             src="${el.url[0]}"
@@ -164,6 +164,7 @@ products.rings.forEach((el) => {
           <p class="product__price">${el.price} EUR</p>
           </div>
         </div>`;
+
   productsDOM.insertAdjacentHTML("afterbegin", html);
 });
 
@@ -304,16 +305,6 @@ document
   .querySelector(".header__logo")
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
 
-// (function () {
-//   if (window.innerWidth <= 365) {
-//     // navTriggerBtn.classList.remove("hidden");
-//     // navBar.classList.add("pos__fixed");
-//   }
-//   // if (window.innerWidth > 921) {
-//   //   navTriggerBtn.classList.add("hidden");
-//   // }
-// })();
-
 navTriggerBtn.addEventListener("click", function (e) {
   navBar.classList.toggle("nav__hide");
   navBar.classList.toggle("nav__fixed");
@@ -326,20 +317,66 @@ const slides = document.querySelectorAll(".product");
 const sliderRightBtn = document.querySelector(".slider__btn-right");
 const sliderLeftBtn = document.querySelector(".slider__btn-left");
 const dotsContainer = document.querySelector(".dots");
-let currentSlide = 1;
-const sliding = function (slide) {
-  slides.forEach((el, i) => {
-    el.style.transform = `translateX(${120 * (i - slide)}%)`;
-  });
+let currentSlide = 2;
+
+const slidesAnimation = function () {
+  [...slides]
+    .filter((slide) => slide.dataset.id !== currentSlide)
+    .forEach((item) => {
+      item.classList.remove("shadow");
+    });
+  //
+  slides[currentSlide].classList.remove("shadow-1");
+  slides[currentSlide].classList.add("shadow");
+  slides[currentSlide].style.transform = "scale(1.1)";
 };
+
+const sliding = function (slide) {
+  slides.forEach((el, i, arr) => {
+    el.style.transform = `translateX(${120 * (i - slide)}%) scale(0.9)`;
+    el.classList.add("shadow-1");
+  });
+  if (window.innerWidth >= 880) slidesAnimation();
+};
+// BRINGING 3 PRODUCTS PER WAVE IN SLIDER
+// let a = 0;
+// let b = 3;
+// console.log([...slides].slice(a, b));
+// const test = function (slide) {
+//   a += 3;
+//   b += 3;
+//   console.log([...slides].slice(a, b));
+// };
+// test();
+// test();
 sliding(currentSlide);
+
 const slidingRight = function () {
-  currentSlide === slides.length - 2 ? (currentSlide = 1) : currentSlide++;
+  let max = 1;
+  let min = 0;
+  // Larger screen size
+  // if (window.innerWidth > 1300) {
+  //   max = 2;
+  //   min = 1;
+  // }
+  currentSlide >= slides.length - max ? (currentSlide = min) : currentSlide++;
   sliding(currentSlide);
+
+  // slides[
+  //   currentSlide >= slides.length ? slides.length - max : currentSlide - 1
+  // ].style.background = "none";
+  //
 };
 
 const slidingLeft = function () {
-  currentSlide === 1 ? (currentSlide = slides.length - 2) : currentSlide--;
+  let max = 1;
+  let min = 0;
+  // Larger screen size
+  // if (window.innerWidth > 1300) {
+  //   max = 2;
+  //   min = 1;
+  // }
+  currentSlide <= min ? (currentSlide = slides.length - max) : currentSlide--;
   sliding(currentSlide);
 };
 
@@ -352,3 +389,13 @@ slides.forEach((el) => {
 
 sliderRightBtn.addEventListener("click", slidingRight);
 sliderLeftBtn.addEventListener("click", slidingLeft);
+
+// (function () {
+//   if (window.innerWidth <= 365) {
+//     // navTriggerBtn.classList.remove("hidden");
+//     // navBar.classList.add("pos__fixed");
+//   }
+//   // if (window.innerWidth > 921) {
+//   //   navTriggerBtn.classList.add("hidden");
+//   // }
+// })();
