@@ -356,7 +356,6 @@ slides.forEach((el) => {
 
 const activateDot = function () {
   document.querySelectorAll(".dot").forEach((dot) => {
-    console.log(dot, currentSlide);
     if (+dot.dataset.id !== currentSlide) dot.style.backgroundColor = "#64b4c5";
     if (+dot.dataset.id === currentSlide) dot.style.backgroundColor = "#50909e";
   });
@@ -364,8 +363,8 @@ const activateDot = function () {
 activateDot();
 
 dotsContainer.addEventListener("click", function (e) {
-  console.log(e.target);
   if (!e.target.classList.contains("dot")) return;
+
   const getDotId = +e.target.dataset.id;
   currentSlide = getDotId;
   activateDot();
@@ -379,6 +378,18 @@ const sliding = function (slide) {
   if (window.innerWidth >= 880) slidesAnimation();
   activateDot();
 };
+
+dotsContainer.addEventListener("mouseover", (e) => {
+  if (!e.target.classList.contains("dot")) return;
+  e.target.style.backgroundColor = "#50909e";
+});
+
+dotsContainer.addEventListener("mouseout", (e) => {
+  const id = +e.target.dataset.id;
+  if (!e.target.classList.contains("dot") || id === currentSlide) return;
+
+  e.target.style.backgroundColor = "#64b4c5";
+});
 // BRINGING 3 PRODUCTS PER WAVE IN SLIDER
 // let a = 0;
 // let b = 3;
