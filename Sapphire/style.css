@@ -25,6 +25,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: var(--color-background);
   position: relative;
+  overflow-x: hidden;
 }
 
 h1,
@@ -589,6 +590,8 @@ p {
 
 .category {
   max-width: 40rem;
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
 
   position: relative;
   cursor: pointer;

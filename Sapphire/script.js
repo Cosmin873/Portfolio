@@ -38,7 +38,7 @@ const capitalize = function (input) {
 const slideshow = document.querySelector(".slideshow");
 const sliders = document.querySelectorAll(".hero");
 
-// NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL
+// **NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL** //
 
 navContainer.addEventListener("click", function (e) {
   e.preventDefault();
@@ -111,7 +111,7 @@ submitContactForm.addEventListener("click", function (e) {
     }, 10000);
   }
 });
-
+// **NEWSLETTER** //
 const newsletterPopup = function (situation) {
   let html = "";
   error.textContent = html;
@@ -153,6 +153,7 @@ products.rings.forEach((el) => {
             class="product__img img"
             alt="Wedding rings made of gold"
             data-code="${el.code}"
+            
           />
   </div>
           <div class="product__information">
@@ -258,8 +259,8 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
   localStorage.setItem("emails", JSON.stringify(emailList));
 });
 
-// INTERSECTION OBSERVER API
-// STICKY NAV
+// **INTERSECTION OBSERVER API** //
+// **STICKY NAV** //
 
 // Callback Functions
 const obsNavCB = function (entries, observer) {
@@ -310,7 +311,7 @@ navTriggerBtn.addEventListener("click", function (e) {
   navBar.classList.toggle("nav__fixed");
 });
 
-// Bestseller slider
+// **Bestseller slider** //
 
 // productsDOM = slider
 const slides = document.querySelectorAll(".product");
@@ -346,11 +347,11 @@ const slidesAnimation = function () {
     sliderRightBtn.style.transform = "translate(0, 30%)";
   }
 })();
-let dotId = 0;
-slides.forEach((el) => {
+
+slides.forEach((el, i) => {
   dotsContainer.insertAdjacentHTML(
     "beforeend",
-    `<button class="dot" data-id = "${dotId++}"></button>`
+    `<button class="dot" data-id = "${i}"></button>`
   );
 });
 
@@ -365,8 +366,7 @@ activateDot();
 dotsContainer.addEventListener("click", function (e) {
   if (!e.target.classList.contains("dot")) return;
 
-  const getDotId = +e.target.dataset.id;
-  currentSlide = getDotId;
+  currentSlide = +e.target.dataset.id;
   activateDot();
   sliding(currentSlide);
 });
@@ -444,3 +444,23 @@ sliderLeftBtn.addEventListener("click", slidingLeft);
 //   //   navTriggerBtn.classList.add("hidden");
 //   // }
 // })();
+
+// Sending product information to another file
+productsDOM.addEventListener("click", function (e) {
+  // Get the product code
+  const code = e.target.closest(".product").querySelector(".product__img")
+    .dataset.code;
+
+  // Find the product in the database
+  const product = Object.values(products)[0].find((el) => el.code === code);
+  console.log(product);
+
+  // Delete the localStorage
+  localStorage.removeItem("product");
+
+  // Add the product to the localStorage
+  localStorage.setItem("product", JSON.stringify(product));
+
+  // Redirect to the product page
+  window.location.pathname = "/product-page.html";
+});
