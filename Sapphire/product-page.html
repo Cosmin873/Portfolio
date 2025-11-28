@@ -80,27 +80,24 @@
         <div class="container">
           <div class="product__page-grid">
             <div class="product__page-presentation">
-              <div class="gallery">
-                <div class="gallery__container gallery__container-1">
+              <div>
+                <!-- <div class="gallery__container gallery__container-highlight">
                   <img
-                    class="img gallery-img gallery__img-1"
+                    class="img gallery-highlight"
                     alt=""
                     src="./img/Products/camdr/YGCA.jpg"
                   />
-                </div>
-                <div class="gallery__container gallery__container-2">
-                  <img
-                    class="img gallery-img gallery__img-2"
-                    alt=""
-                    src="./img/Products/camdr/WGCA.jpg"
-                  />
-                </div>
-                <div class="gallery__container gallery__container-3">
-                  <img
-                    class="img gallery-img gallery__img-3"
-                    alt=""
-                    src="./img/Products/camdr/RGCA.jpg"
-                  />
+                </div> -->
+                <div class="gallery-grid">
+                  <!-- <div
+                    class="gallery__container-thumbnail gallery__thumbnail-1"
+                  >
+                    <img
+                      class="img gallery-thumbnail thumbnail-2"
+                      alt=""
+                      src="./img/Products/camdr/WGCA.jpg"
+                    />
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -112,7 +109,8 @@
               <label class="review__system">
                 <span class="review__system-title">Reviews</span>
                 <div class="review__ratings">
-                  &star;&star;&star;&star;&star; <span>(0 / 5, 0 reviews)</span>
+                  <span class="stars">&star;&star;&star;&star;&star;</span>
+                  <span>(0 / 5, 0 reviews)</span>
                 </div>
               </label>
               <h3 class="product__page-price">
@@ -123,17 +121,21 @@
                 <div class="quantity__input">
                   <input
                     type="button"
-                    class="cta-input quantity__substract"
+                    class="cta-input quantity__decrement"
                     value="&minus;"
                   />
 
                   <input
-                    type="text"
+                    type="number"
                     class="cta-input quatity__number"
-                    placeholder="1"
+                    value="1"
                     maxlength="1"
+                    min="1"
+                    max="9"
+                    pattern="[0-9]*"
+                    readonly
                   />
-                  <button class="cta-input quantity__add">&plus;</button>
+                  <button class="cta-input quantity__increment">&plus;</button>
                 </div>
                 <button class="cta-btn add-to-cart">Add to cart</button>
                 <button class="cta-btn buy">Buy</button>
@@ -154,6 +156,12 @@
         </div>
       </section>
     </main>
+    <div class="gallery__modal fade-in">
+      <button class="close__modal">X</button>
+      <div class="modal__container">
+        <img class="img__modal" src="" />
+      </div>
+    </div>
   </body>
 </html>
 

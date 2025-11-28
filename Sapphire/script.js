@@ -1,5 +1,6 @@
 "use strict";
 import { products, categories } from "./db.js";
+import { renderHighlight } from "./general-functions.js";
 
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
