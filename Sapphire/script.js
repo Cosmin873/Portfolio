@@ -1,6 +1,11 @@
 "use strict";
-import { products, categories } from "./db.js";
-import { renderHighlight } from "./general-functions.js";
+import { data } from "./db.js";
+import {
+  capitalize,
+  renderProducts,
+  cardImgSlider,
+  cardImgSliderReset,
+} from "./general-functions.js";
 
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
@@ -30,24 +35,20 @@ const getEmails = function () {
 getEmails();
 console.log(emailList);
 
-// HELPER FUNCTIONS
-const capitalize = function (input) {
-  return input.at(0).toUpperCase() + input.slice(1);
-};
-
 // SLIDESHOW
 const slideshow = document.querySelector(".slideshow");
 const sliders = document.querySelectorAll(".hero");
 
 // **NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL** //
 
-navContainer.addEventListener("click", function (e) {
+const navBarFunc = function (e) {
   e.preventDefault();
   if (e.target.classList.contains("link__scroll")) {
     const id = e.target.getAttribute("href").slice(1);
     const toTarget = document.querySelector(`.${id}`);
 
     if (
+      window.innerWidth <= 576 &&
       navBar.classList.contains("nav__fixed") &&
       !navBar.classList.contains("nav__hide")
     ) {
@@ -74,17 +75,23 @@ navContainer.addEventListener("click", function (e) {
       `;
     document.querySelector(".contact__form").innerHTML = formHTML;
   }
-});
+};
+
+navContainer.addEventListener("click", navBarFunc);
+
 // CLOSE BUTTON
-closeModal.addEventListener("click", function () {
+
+const closeModalBtn = function () {
   modal.classList.add("fade-in");
   overlay.classList.add("hidden");
   document.querySelector(".modal__error").classList.add("hidden");
-});
+};
+
+closeModal.addEventListener("click", closeModalBtn);
 
 // SUBMIT BUTTON
 
-submitContactForm.addEventListener("click", function (e) {
+const submitContactFormFunc = function (e) {
   e.preventDefault();
   const elemente = this.closest(".modal")
     .querySelector(".contact__form")
@@ -111,113 +118,73 @@ submitContactForm.addEventListener("click", function (e) {
       document.querySelector(".modal__error").classList.add("hidden");
     }, 10000);
   }
-});
-// **NEWSLETTER** //
-const newsletterPopup = function (situation) {
-  let html = "";
-  error.textContent = html;
-  if (situation === "pass") {
-    html = `<h6 class="error__title">You subscribed to our newsletter!</h6>`;
-    error.style.backgroundColor = "rgba(0, 255, 94, 0.2)";
-    error.style.border = "1px solid green";
-    error.classList.remove("fade-in");
-    error.insertAdjacentHTML("beforeend", html);
-  }
-  if (situation === "err") {
-    html = `<h6 class="error__title">Email form incorrect. Try again!</h6>`;
-    error.style.backgroundColor = "rgba(255, 0, 72, 0.2)";
-    error.style.border = "1px solid brown";
-    error.classList.remove("fade-in");
-    error.insertAdjacentHTML("beforeend", html);
-  }
-  if (situation === "existingMail") {
-    html = `<h6 class="error__title">The email already exist in our database!</h6>`;
-    error.style.backgroundColor = "rgba(238, 255, 0, 0.2)";
-    error.style.border = "1px solid yellow";
-    error.classList.remove("fade-in");
-    error.insertAdjacentHTML("beforeend", html);
-  }
-  setTimeout(function () {
-    error.classList.add("fade-in");
-  }, 5000);
 };
+
+submitContactForm.addEventListener("click", submitContactFormFunc);
 
 cta.addEventListener("click", () =>
   document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
 );
-let id = 0;
-products.rings.forEach((el) => {
-  const html = `<div class="product" data-id = "${id++}"> 
-  <div class="product__img-container">
-<img
-            src="${el.url[0]}"
-            class="product__img img"
-            alt="Wedding rings made of gold"
-            data-code="${el.code}"
-            
-          />
-  </div>
-          <div class="product__information">
-          <h4 class="product__title">${el.title}</h4>
-          <h5 class="product__material-title">Colors:</h5>
-          <ul class="product__material">${el.material
-            .map((type) => `<li>${capitalize(type)}</li>`)
-            .join("")}</ul>
-          <p class="product__price">${el.price} EUR</p>
-          </div>
-        </div>`;
 
-  productsDOM.insertAdjacentHTML("afterbegin", html);
-});
+// Bestsellers Section
 
-let i = 0;
-let interval;
-const increment = function (e) {
-  if (!e.target.classList.contains("product__img")) return;
+renderProducts(data.bestsellers, productsDOM, "afterbegin"); // render the products in the slider (source, target, insertOrder)
 
-  const code = e.target.dataset.code;
+// Bestseller changing image at 1.5s based on materials
 
-  const prod = products.rings.find((x) => x.code === code);
-  if (i >= prod.url.length) i = 0;
+productsDOM.addEventListener("mouseover", cardImgSlider(data.bestsellers));
 
-  i++;
-  e.target.src = prod.url[i];
-  interval = setInterval(function () {
-    i++;
-    e.target.src = prod.url[i];
-    if (i >= prod.url.length - 1) i = -1;
-  }, 1500);
+productsDOM.addEventListener("mouseout", cardImgSliderReset(data.bestsellers));
+
+// Product page
+
+// Sending product information to another file
+
+const redirectToProductPage = function (e) {
+  // Get the product code
+  const code = e.target.closest(".product").querySelector(".product__img")
+    .dataset.code;
+
+  // Find the product in the database
+  const product = data.allProducts.find((el) => el.code === code);
+
+  // Delete the localStorage
+  localStorage.removeItem("product");
+
+  // Add the product to the localStorage
+  localStorage.setItem("product", JSON.stringify(product));
+
+  // Redirect to the product page
+  window.location.pathname = "/product-page.html";
 };
 
-productsDOM.addEventListener("mouseover", increment);
+productsDOM.addEventListener("click", redirectToProductPage);
 
-productsDOM.addEventListener("mouseout", function (e) {
-  if (!e.target.classList.contains("product__img")) return;
+// Our Selection (Catalog)
 
-  const code = e.target.dataset.code;
-  const prod = products.rings.find((x) => x.code === code);
+// Rendering the categories
+const getCategories = function () {
+  const dataObject = Object.entries(data);
+  return [dataObject[0], dataObject[1], dataObject[2]];
+};
 
-  i = 0;
-
-  e.target.src = prod.url[0];
-  clearInterval(interval);
-});
-
-Object.entries(categories).forEach((el) => {
-  const html = `  <div class="category">
+const renderCategories = function (source, target, insertOrder) {
+  source.forEach((el) => {
+    const html = `  <div class="category">
           <img
-            src="${el[1]}"
+            src="${el[1].img}"
             class="category__img img"
             alt="Ring category"
           />
           <div class="category__information">
-            <h3 class="category__title">${
-              el[0].at(0).toUpperCase() + el[0].slice(1)
-            }s</h3>
+            <h3 class="category__title">${capitalize(el[0])}</h3>
           </div>
         </div>`;
-  categoriesDOM.insertAdjacentHTML("beforeend", html);
-});
+    target.insertAdjacentHTML(insertOrder, html);
+  });
+};
+
+renderCategories(getCategories(), categoriesDOM, "beforeend");
 
 const category = document.querySelectorAll(".category");
 
@@ -239,25 +206,6 @@ category.forEach((el) => {
     //  if (!e.target.classList.contains("category__img")) return;
     info.style.height = "10rem";
   });
-});
-
-// newsletterInputField
-// newsletterSubmitBtn
-
-newsletterSubmitBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  getEmails();
-  const email = newsletterInputField.value;
-
-  if (!email.includes("@") || !email.includes(".") || !email)
-    return newsletterPopup("err");
-
-  if (emailList.some((em) => em === email))
-    return newsletterPopup("existingMail");
-  newsletterPopup("pass");
-  emailList.push(email);
-  newsletterInputField.value = "";
-  localStorage.setItem("emails", JSON.stringify(emailList));
 });
 
 // **INTERSECTION OBSERVER API** //
@@ -314,7 +262,7 @@ navTriggerBtn.addEventListener("click", function (e) {
 
 // **Bestseller slider** //
 
-// productsDOM = slider
+// productsDOM === slider
 const slides = document.querySelectorAll(".product");
 const sliderRightBtn = document.querySelector(".slider__btn-right");
 const sliderLeftBtn = document.querySelector(".slider__btn-left");
@@ -446,22 +394,51 @@ sliderLeftBtn.addEventListener("click", slidingLeft);
 //   // }
 // })();
 
-// Sending product information to another file
-productsDOM.addEventListener("click", function (e) {
-  // Get the product code
-  const code = e.target.closest(".product").querySelector(".product__img")
-    .dataset.code;
+// **NEWSLETTER** //
+const newsletterPopup = function (situation) {
+  let html = "";
+  error.textContent = html;
+  if (situation === "pass") {
+    html = `<h6 class="error__title">You subscribed to our newsletter!</h6>`;
+    error.style.backgroundColor = "rgba(0, 255, 94, 0.2)";
+    error.style.border = "1px solid green";
+    error.classList.remove("fade-in");
+    error.insertAdjacentHTML("beforeend", html);
+  }
+  if (situation === "err") {
+    html = `<h6 class="error__title">Email form incorrect. Try again!</h6>`;
+    error.style.backgroundColor = "rgba(255, 0, 72, 0.2)";
+    error.style.border = "1px solid brown";
+    error.classList.remove("fade-in");
+    error.insertAdjacentHTML("beforeend", html);
+  }
+  if (situation === "existingMail") {
+    html = `<h6 class="error__title">The email already exist in our database!</h6>`;
+    error.style.backgroundColor = "rgba(238, 255, 0, 0.2)";
+    error.style.border = "1px solid yellow";
+    error.classList.remove("fade-in");
+    error.insertAdjacentHTML("beforeend", html);
+  }
+  setTimeout(function () {
+    error.classList.add("fade-in");
+  }, 5000);
+};
 
-  // Find the product in the database
-  const product = Object.values(products)[0].find((el) => el.code === code);
-  console.log(product);
+// newsletterInputField
+// newsletterSubmitBtn
 
-  // Delete the localStorage
-  localStorage.removeItem("product");
+newsletterSubmitBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  getEmails();
+  const email = newsletterInputField.value;
 
-  // Add the product to the localStorage
-  localStorage.setItem("product", JSON.stringify(product));
+  if (!email.includes("@") || !email.includes(".") || !email)
+    return newsletterPopup("err");
 
-  // Redirect to the product page
-  window.location.pathname = "/product-page.html";
+  if (emailList.some((em) => em === email))
+    return newsletterPopup("existingMail");
+  newsletterPopup("pass");
+  emailList.push(email);
+  newsletterInputField.value = "";
+  localStorage.setItem("emails", JSON.stringify(emailList));
 });
