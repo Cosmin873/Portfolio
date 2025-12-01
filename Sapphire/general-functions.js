@@ -39,15 +39,16 @@ const cardImgSlider = function (source) {
     const code = e.target.dataset.code;
 
     const prod = source.find((x) => x.code === code);
+    if (prod.url.length === 1) return;
     if (i >= prod.url.length) i = 0;
     console.log(e.target);
     console.log(prod);
     i++;
     e.target.src = prod.url[i];
     interval = setInterval(function () {
+      if (i >= prod.url.length - 1) i = -1;
       i++;
       e.target.src = prod.url[i];
-      if (i >= prod.url.length - 1) i = -1;
     }, 1500);
   };
 };

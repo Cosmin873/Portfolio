@@ -102,9 +102,9 @@
               </div>
             </div>
             <div class="product__page-information">
-              <h1 class="product__page-title">Product Title</h1>
+              <h1 class="product__page-title"></h1>
               <h2 class="product__page-subtitle">
-                Category: <span class="category">Rings</span>
+                Category: <span class="category"></span>
               </h2>
               <label class="review__system">
                 <span class="review__system-title">Reviews</span>
@@ -114,7 +114,7 @@
                 </div>
               </label>
               <h3 class="product__page-price">
-                <span class="price">310</span> EUR
+                <span class="price"></span> EUR
               </h3>
 
               <div class="product__page-cta">
@@ -153,8 +153,98 @@
       <section class="product__page-tabs">
         <div class="container">
           <!-- Description / Details / FAQ / Care Instructions / Delivery & Shipping -->
+
+          <div class="tabs__container">
+            <ul class="tabs__list" role="tablist">
+              <li class="tab__item tab-active">
+                <button
+                  class="tab__btn tab__btn-1"
+                  role="tab"
+                  data-type="description"
+                >
+                  Description
+                </button>
+              </li>
+              <li class="tab__item">
+                <button
+                  class="tab__btn tab__btn-2"
+                  role="tab"
+                  data-type="details"
+                >
+                  Details
+                </button>
+              </li>
+              <li class="tab__item">
+                <button class="tab__btn tab__btn-3" role="tab" data-type="faq">
+                  FAQ
+                </button>
+              </li>
+              <li class="tab__item">
+                <button
+                  class="tab__btn tab__btn-4"
+                  role="tab"
+                  data-type="care_instructions"
+                >
+                  Care Instructions
+                </button>
+              </li>
+              <li class="tab__item">
+                <button
+                  class="tab__btn tab__btn-5"
+                  role="tab"
+                  data-type="delivery"
+                >
+                  Delivery & Shipping
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="tab__content"></div>
         </div>
       </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__header">
+            <img class="img footer__logo" alt="logo" src="./img/logo.png" />
+            <form class="newsletter__box">
+              <h3 class="newsletter__title">Subscribe to our newsletter</h3>
+              <input
+                type="email"
+                class="newsletter__input"
+                placeholder="Enter your email"
+              />
+              <input
+                type="submit"
+                class="newsletter__submit"
+                value="Subscribe"
+              />
+            </form>
+          </div>
+          <div class="footer__links">
+            <ul class="list footer__list">
+              <h4 class="footer__list-title">Menu</h4>
+              <li class="footer__list-item">Catalog</li>
+              <li class="footer__list-item">Bestsellers</li>
+              <li class="footer__list-item">About Us</li>
+              <li class="footer__list-item">Contact</li>
+            </ul>
+            <ul class="list footer__list">
+              <h4 class="footer__list-title">Helpful links</h4>
+              <li class="footer__list-item">Return Policy</li>
+              <li class="footer__list-item">Shipping Policy</li>
+              <li class="footer__list-item">Privacy Policy</li>
+              <li class="footer__list-item">Warranty</li>
+            </ul>
+            <ul class="list footer__list">
+              <h4 class="footer__list-title">Social</h4>
+              <li class="footer__list-item">Instagram</li>
+              <li class="footer__list-item">Facebook</li>
+              <li class="footer__list-item">Pinterest</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </main>
     <div class="gallery__modal fade-in">
       <button class="close__modal">X</button>

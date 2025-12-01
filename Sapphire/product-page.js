@@ -1,7 +1,13 @@
-import { renderHighlight, renderThumbnails } from "./general-functions.js";
+import {
+  renderHighlight,
+  renderThumbnails,
+  capitalize,
+} from "./general-functions.js";
+import { data } from "./db.js";
 
 const product = JSON.parse(localStorage.getItem("product"));
 console.log(product);
+if (!product) throw new Error("Error 404: Not found!");
 
 // NAVIGATION
 const logo = document.querySelector(".logo");
@@ -21,11 +27,17 @@ const quantityIncrement = document.querySelector(".quantity__increment");
 const quantity = document.querySelector(".quatity__number");
 const quantityDecrement = document.querySelector(".quantity__decrement");
 
+// TABS
+const tabsContainer = document.querySelector(".tabs__list");
+const tabContent = document.querySelector(".tab__content");
+
 product.url.forEach((el, i, arr) => {});
 // Product initialization
 (function () {
   productTitle.textContent = product.title;
   productPrice.textContent = product.price;
+  productCategory.textContent = capitalize(product.category);
+  tabContent.innerHTML = product.description;
   renderHighlight(product, gallery);
   renderThumbnails(product, gallery);
 })();
@@ -83,3 +95,21 @@ function imageZoom(container, img) {
 }
 
 imageZoom(container, img);
+
+// TABS
+
+tabsContainer.addEventListener("click", function (e) {
+  if (!e.target.classList.contains("tab__btn")) return;
+  const type = e.target.dataset.type;
+  const category = product.category;
+
+  const content = product[type]
+    ? product[type]
+    : data[category]["category_info"][type];
+
+  document
+    .querySelectorAll(".tab__item")
+    .forEach((el) => el.classList.remove("tab-active"));
+  e.target.closest(".tab__item").classList.add("tab-active");
+  tabContent.innerHTML = content;
+});

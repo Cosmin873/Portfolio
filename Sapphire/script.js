@@ -127,14 +127,14 @@ cta.addEventListener("click", () =>
 );
 
 // Bestsellers Section
-
-renderProducts(data.bestsellers, productsDOM, "afterbegin"); // render the products in the slider (source, target, insertOrder)
+// In production = data.bestsellers!!!
+renderProducts(data.allProducts, productsDOM, "afterbegin"); // render the products in the slider (source, target, insertOrder)
 
 // Bestseller changing image at 1.5s based on materials
 
-productsDOM.addEventListener("mouseover", cardImgSlider(data.bestsellers));
+productsDOM.addEventListener("mouseover", cardImgSlider(data.allProducts));
 
-productsDOM.addEventListener("mouseout", cardImgSliderReset(data.bestsellers));
+productsDOM.addEventListener("mouseout", cardImgSliderReset(data.allProducts));
 
 // Product page
 
@@ -147,6 +147,16 @@ const redirectToProductPage = function (e) {
 
   // Find the product in the database
   const product = data.allProducts.find((el) => el.code === code);
+
+  // Finding the category
+  const findingCategory = function (byProduct) {
+    for (const [key, value] of Object.entries(data)) {
+      if (!value || !value.products) continue;
+      if (value.products.includes(byProduct)) byProduct.category = key;
+    }
+    console.log(byProduct);
+  };
+  findingCategory(product);
 
   // Delete the localStorage
   localStorage.removeItem("product");
@@ -270,6 +280,7 @@ const dotsContainer = document.querySelector(".dots");
 let currentSlide = 2;
 
 const slidesAnimation = function () {
+  // Removing large shadow for the products adjacent to main one
   [...slides]
     .filter((slide) => slide.dataset.id !== currentSlide)
     .forEach((item) => {
