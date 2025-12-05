@@ -5,9 +5,9 @@ const capitalize = function (input) {
 
 // HOME PAGE / MAIN SCRIPT
 
-const renderProducts = function (source, target, insertOrder) {
+const renderProducts = function (source, target, insertOrder, optClass = "") {
   source.forEach((el, id) => {
-    const html = `<div class="product" data-id = "${id++}"> 
+    const html = `<div class="product ${optClass}" data-id = "${id++}"> 
   <div class="product__img-container">
 <img
             src="${el.url[0]}"
@@ -67,13 +67,164 @@ const cardImgSliderReset = function (source) {
   };
 };
 
+const renderSlider = function (
+  source,
+  btnTarget,
+  currentSlide,
+  sliderContainer,
+  translate = 120,
+  min = 0,
+  max = 1,
+  animation = true
+) {
+  // let currentSlide = currentSl;
+  const slidesAnimation = function () {
+    // Removing large shadow for the products adjacent to main one
+    if (animation) {
+      [...source]
+        .filter((slide) => slide.dataset.id !== currentSlide)
+        .forEach((item) => {
+          item.classList.remove("shadow");
+        });
+      //
+      source[currentSlide].classList.remove("shadow-1");
+      source[currentSlide].classList.add("shadow");
+      source[currentSlide].style.transform = "scale(1.1)";
+    }
+  };
+
+  // Adding buttons and dots
+  const btnHtml = ` <button class="slider__btn slider__btn-left slider__btn-top">
+              &#10094;
+            </button>
+            <button class="slider__btn slider__btn-right slider__btn-top">
+              &#10095;
+            </button>
+            <div class="dots"></div>`;
+
+  btnTarget.insertAdjacentHTML("beforeend", btnHtml);
+
+  // Capturing the buttons into variables
+
+  const sliderRightBtn = document.querySelector(".slider__btn-right");
+  const sliderLeftBtn = document.querySelector(".slider__btn-left");
+  const dotsContainer = document.querySelector(".dots");
+  (function () {
+    if (window.innerWidth < 576) {
+      // document.querySelector(".container-L").style.width = "100%";
+      // document.querySelector(".container-L").style.padding = "0";
+      // document.querySelector(".slider__btn").style.fontSize = "2rem";
+      sliderContainer.style.width = "100%";
+      sliderContainer.style.padding = "0";
+
+      sliderLeftBtn.style.fontSize = "8rem";
+      sliderRightBtn.style.fontSize = "8rem";
+      sliderLeftBtn.classList.remove("slider__btn-top");
+      sliderLeftBtn.classList.add("slider__btn-bottom");
+      sliderRightBtn.classList.remove("slider__btn-top");
+      sliderRightBtn.classList.add("slider__btn-bottom");
+      sliderLeftBtn.style.transform = "translate(0, 30%)";
+      sliderRightBtn.style.transform = "translate(0, 30%)";
+    }
+  })();
+
+  source.forEach((el, i) => {
+    dotsContainer.insertAdjacentHTML(
+      "beforeend",
+      `<button class="dot" data-id = "${i}"></button>`
+    );
+  });
+
+  const activateDot = function () {
+    document.querySelectorAll(".dot").forEach((dot) => {
+      if (+dot.dataset.id !== currentSlide)
+        dot.style.backgroundColor = "#64b4c5";
+      if (+dot.dataset.id === currentSlide)
+        dot.style.backgroundColor = "#50909e";
+    });
+  };
+  activateDot();
+
+  dotsContainer.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("dot")) return;
+
+    currentSlide = +e.target.dataset.id;
+    activateDot();
+    sliding(currentSlide);
+  });
+  const sliding = function (slide) {
+    source.forEach((el, i, arr) => {
+      el.style.transform = `translateX(${translate * (i - slide)}%) scale(0.9)`;
+      el.classList.add("shadow-1");
+    });
+    if (window.innerWidth >= 880) slidesAnimation();
+    activateDot();
+  };
+
+  dotsContainer.addEventListener("mouseover", (e) => {
+    if (!e.target.classList.contains("dot")) return;
+    e.target.style.backgroundColor = "#50909e";
+  });
+
+  dotsContainer.addEventListener("mouseout", (e) => {
+    const id = +e.target.dataset.id;
+    if (!e.target.classList.contains("dot") || id === currentSlide) return;
+
+    e.target.style.backgroundColor = "#64b4c5";
+  });
+  // BRINGING 3 PRODUCTS PER WAVE IN SLIDER
+  // let a = 0;
+  // let b = 3;
+  // console.log([...slides].slice(a, b));
+  // const test = function (slide) {
+  //   a += 3;
+  //   b += 3;
+  //   console.log([...slides].slice(a, b));
+  // };
+  // test();
+  // test();
+  sliding(currentSlide);
+
+  const slidingRight = function () {
+    // let max = 1;
+    // let min = 0;
+    // Larger screen size
+    // if (window.innerWidth > 1300) {
+    //   max = 2;
+    //   min = 1;
+    // }
+    currentSlide >= source.length - max ? (currentSlide = min) : currentSlide++;
+    sliding(currentSlide);
+
+    // slides[
+    //   currentSlide >= slides.length ? slides.length - max : currentSlide - 1
+    // ].style.background = "none";
+    //
+  };
+
+  const slidingLeft = function () {
+    // let max = 1;
+    // let min = 0;
+    // Larger screen size
+    // if (window.innerWidth > 1300) {
+    //   max = 2;
+    //   min = 1;
+    // }
+    currentSlide <= min ? (currentSlide = source.length - max) : currentSlide--;
+    sliding(currentSlide);
+  };
+
+  sliderRightBtn.addEventListener("click", slidingRight);
+  sliderLeftBtn.addEventListener("click", slidingLeft);
+};
+
 // PRODUCT PAGE //
 
 // Render highlight img in the gallery from the product object
-const renderHighlight = function (source, target) {
+const renderHighlight = function (source, target, insertOrder) {
   target.insertAdjacentHTML(
-    "beforebegin",
-    `<div class="gallery__container gallery__container-highlight">
+    insertOrder,
+    `<div class="gallery__container gallery__img gallery__container-highlight">
                   <img
                     class="img gallery-highlight"
                     alt="${source.tag}"
@@ -85,12 +236,12 @@ const renderHighlight = function (source, target) {
 
 // Render thumbnails imgs in the gallery from the product object
 
-const renderThumbnails = function (source, target) {
+const renderThumbnails = function (source, target, insertOrder) {
   source.url.forEach((img, i) =>
     target.insertAdjacentHTML(
-      "beforeend",
+      insertOrder,
       `<div
-                    class="gallery__container-thumbnail gallery__thumbnail-${
+                    class="gallery__container-thumbnail gallery__img gallery__thumbnail-${
                       i + 1
                     }"
                   >
@@ -111,4 +262,5 @@ export {
   capitalize,
   cardImgSlider,
   cardImgSliderReset,
+  renderSlider,
 };

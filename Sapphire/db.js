@@ -419,11 +419,13 @@ International:<br/>
 
   get bestsellers() {
     return [
-      this.rings.products[0],
-      this.rings.products[1],
       this.rings.products[2],
-      this.rings.products[3],
-      this.rings.products[4],
+      this.necklaces.products[0],
+      this.bracelets.products[0],
+      this.rings.products[1],
+      this.necklaces.products[2],
+
+      this.bracelets.products[2],
     ];
   },
 

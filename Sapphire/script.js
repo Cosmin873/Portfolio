@@ -5,11 +5,19 @@ import {
   renderProducts,
   cardImgSlider,
   cardImgSliderReset,
+  renderSlider,
 } from "./general-functions.js";
 
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
 const navContainer = document.querySelector(".nav__menu");
+const searchBarDOM = document.querySelector(".search__bar");
+const searchBarClose = document.querySelector(".search__bar-close");
+const searchInput = document.querySelector(".search-input");
+const searchResultBar = document.querySelector(".search__result");
+let searchResultList = document.querySelector(".search__result-list");
+let searchResultItem;
+const searchResultContent = document.querySelector(".search__result-content");
 const cta = document.querySelector(".cta");
 const newsletterInputField = document.querySelector(".newsletter__input");
 const newsletterSubmitBtn = document.querySelector(".newsletter__submit");
@@ -18,12 +26,28 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const closeModal = document.querySelector(".close__modal");
 const submitContactForm = document.querySelector(".contact__submit");
+const containerL = document.querySelector(".container-L");
 // IntersectionObserver API // Sticky nav
 const navBar = document.querySelector(".nav__bar");
 const hero = document.querySelector(".hero");
 const textIn = document.querySelectorAll(".text-in");
 
 const navTriggerBtn = document.querySelector(".nav__handler");
+
+let search = [];
+let searchResult = [];
+const resetSearchResults = function () {
+  if (searchResultList)
+    [searchResultBar].forEach((el) =>
+      el.querySelectorAll(".slider__btn").forEach((t) => t.remove())
+    );
+  if (searchResultItem)
+    searchResultItem.forEach((el) => {
+      el.remove();
+    });
+
+  searchResult = [];
+};
 
 let emailList = [];
 let formHTML;
@@ -34,10 +58,6 @@ const getEmails = function () {
 };
 getEmails();
 console.log(emailList);
-
-// SLIDESHOW
-const slideshow = document.querySelector(".slideshow");
-const sliders = document.querySelectorAll(".hero");
 
 // **NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL** //
 
@@ -75,11 +95,25 @@ const navBarFunc = function (e) {
       `;
     document.querySelector(".contact__form").innerHTML = formHTML;
   }
+
+  if (e.target.classList.contains("search-icon")) {
+    searchBarDOM.classList.remove("search__fade-in");
+    searchInput.value = "";
+    setTimeout(() => searchInput.focus(), 1000);
+    search = [];
+  }
 };
 
 navContainer.addEventListener("click", navBarFunc);
 
-// CLOSE BUTTON
+// CLOSE BUTTONS
+
+const closeSearchBar = function () {
+  searchBarDOM.classList.add("search__fade-in");
+  searchResultBar.classList.add("search__fade-in");
+  resetSearchResults();
+  search = [];
+};
 
 const closeModalBtn = function () {
   modal.classList.add("fade-in");
@@ -87,7 +121,66 @@ const closeModalBtn = function () {
   document.querySelector(".modal__error").classList.add("hidden");
 };
 
+searchBarClose.addEventListener("click", closeSearchBar);
+
 closeModal.addEventListener("click", closeModalBtn);
+
+// SEARCH BAR
+
+const searchingDB = function (input) {
+  for (const [key, values] of Object.entries(data)) {
+    if (!values.products) continue;
+    // console.log(values);
+    values.products.forEach((el) => {
+      if (el.title.toLowerCase().includes(input)) searchResult.push(el);
+    });
+  }
+};
+searchInput.addEventListener("keydown", function (e) {
+  // if (searchResultList)
+  //   [searchResultList].forEach((el) =>
+  //     el.querySelectorAll(".product").forEach((t) => t.remove())
+  //   );
+  // if (searchResultItem)
+  //   searchResultItem.forEach((el) => console.log("aici", el));
+
+  resetSearchResults();
+  if (e.key === "Backspace") {
+    search.pop();
+  } else search.push(e.key);
+  const searchValue = search.join("");
+  searchingDB(searchValue);
+  renderProducts(
+    searchResult,
+    searchResultList,
+    "beforeend",
+    "search__product"
+  );
+  searchResultItem = document.querySelectorAll(".search__product");
+  searchResultList = document.querySelector(".search__result-list");
+
+  if (searchResultItem.length >= 5) {
+    searchResultItem.forEach((item) => item.classList.add("search__product-S"));
+    renderSlider(
+      searchResultItem,
+      searchResultContent,
+      0,
+      searchResultBar,
+      120,
+      0,
+      4,
+      false
+    );
+  }
+
+  if (searchResultList)
+    [searchResultBar].forEach((el) =>
+      el.querySelectorAll(".dots").forEach((t) => t.remove())
+    );
+  if (search.length > 0) searchResultBar.classList.remove("search__fade-in");
+  if (search.length < 1 || !searchResultList)
+    searchResultBar.classList.add("search__fade-in");
+});
 
 // SUBMIT BUTTON
 
@@ -128,13 +221,13 @@ cta.addEventListener("click", () =>
 
 // Bestsellers Section
 // In production = data.bestsellers!!!
-renderProducts(data.allProducts, productsDOM, "afterbegin"); // render the products in the slider (source, target, insertOrder)
+renderProducts(data.bestsellers, productsDOM, "beforeend", "product-slider"); // render the products in the slider (source, target, insertOrder)
 
 // Bestseller changing image at 1.5s based on materials
 
-productsDOM.addEventListener("mouseover", cardImgSlider(data.allProducts));
+productsDOM.addEventListener("mouseover", cardImgSlider(data.bestsellers));
 
-productsDOM.addEventListener("mouseout", cardImgSliderReset(data.allProducts));
+productsDOM.addEventListener("mouseout", cardImgSliderReset(data.bestsellers));
 
 // Product page
 
@@ -169,6 +262,7 @@ const redirectToProductPage = function (e) {
 };
 
 productsDOM.addEventListener("click", redirectToProductPage);
+searchResultList.addEventListener("click", redirectToProductPage);
 
 // Our Selection (Catalog)
 
@@ -224,6 +318,7 @@ category.forEach((el) => {
 // Callback Functions
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
+    console.log(entry, navBar);
     if (entry.isIntersecting) {
       navBar.classList.remove("nav__fixed");
       navBar.classList.remove("nav__hide");
@@ -274,126 +369,10 @@ navTriggerBtn.addEventListener("click", function (e) {
 
 // productsDOM === slider
 const slides = document.querySelectorAll(".product");
-const sliderRightBtn = document.querySelector(".slider__btn-right");
-const sliderLeftBtn = document.querySelector(".slider__btn-left");
-const dotsContainer = document.querySelector(".dots");
-let currentSlide = 2;
 
-const slidesAnimation = function () {
-  // Removing large shadow for the products adjacent to main one
-  [...slides]
-    .filter((slide) => slide.dataset.id !== currentSlide)
-    .forEach((item) => {
-      item.classList.remove("shadow");
-    });
-  //
-  slides[currentSlide].classList.remove("shadow-1");
-  slides[currentSlide].classList.add("shadow");
-  slides[currentSlide].style.transform = "scale(1.1)";
-};
-(function () {
-  if (window.innerWidth < 576) {
-    document.querySelector(".container-L").style.width = "100%";
-    document.querySelector(".container-L").style.padding = "0";
-    // document.querySelector(".slider__btn").style.fontSize = "2rem";
+const sliderContainer = document.querySelector(".slider");
 
-    sliderLeftBtn.style.fontSize = "8rem";
-    sliderRightBtn.style.fontSize = "8rem";
-    sliderLeftBtn.classList.remove("slider__btn-top");
-    sliderLeftBtn.classList.add("slider__btn-bottom");
-    sliderRightBtn.classList.remove("slider__btn-top");
-    sliderRightBtn.classList.add("slider__btn-bottom");
-    sliderLeftBtn.style.transform = "translate(0, 30%)";
-    sliderRightBtn.style.transform = "translate(0, 30%)";
-  }
-})();
-
-slides.forEach((el, i) => {
-  dotsContainer.insertAdjacentHTML(
-    "beforeend",
-    `<button class="dot" data-id = "${i}"></button>`
-  );
-});
-
-const activateDot = function () {
-  document.querySelectorAll(".dot").forEach((dot) => {
-    if (+dot.dataset.id !== currentSlide) dot.style.backgroundColor = "#64b4c5";
-    if (+dot.dataset.id === currentSlide) dot.style.backgroundColor = "#50909e";
-  });
-};
-activateDot();
-
-dotsContainer.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("dot")) return;
-
-  currentSlide = +e.target.dataset.id;
-  activateDot();
-  sliding(currentSlide);
-});
-const sliding = function (slide) {
-  slides.forEach((el, i, arr) => {
-    el.style.transform = `translateX(${120 * (i - slide)}%) scale(0.9)`;
-    el.classList.add("shadow-1");
-  });
-  if (window.innerWidth >= 880) slidesAnimation();
-  activateDot();
-};
-
-dotsContainer.addEventListener("mouseover", (e) => {
-  if (!e.target.classList.contains("dot")) return;
-  e.target.style.backgroundColor = "#50909e";
-});
-
-dotsContainer.addEventListener("mouseout", (e) => {
-  const id = +e.target.dataset.id;
-  if (!e.target.classList.contains("dot") || id === currentSlide) return;
-
-  e.target.style.backgroundColor = "#64b4c5";
-});
-// BRINGING 3 PRODUCTS PER WAVE IN SLIDER
-// let a = 0;
-// let b = 3;
-// console.log([...slides].slice(a, b));
-// const test = function (slide) {
-//   a += 3;
-//   b += 3;
-//   console.log([...slides].slice(a, b));
-// };
-// test();
-// test();
-sliding(currentSlide);
-
-const slidingRight = function () {
-  let max = 1;
-  let min = 0;
-  // Larger screen size
-  // if (window.innerWidth > 1300) {
-  //   max = 2;
-  //   min = 1;
-  // }
-  currentSlide >= slides.length - max ? (currentSlide = min) : currentSlide++;
-  sliding(currentSlide);
-
-  // slides[
-  //   currentSlide >= slides.length ? slides.length - max : currentSlide - 1
-  // ].style.background = "none";
-  //
-};
-
-const slidingLeft = function () {
-  let max = 1;
-  let min = 0;
-  // Larger screen size
-  // if (window.innerWidth > 1300) {
-  //   max = 2;
-  //   min = 1;
-  // }
-  currentSlide <= min ? (currentSlide = slides.length - max) : currentSlide--;
-  sliding(currentSlide);
-};
-
-sliderRightBtn.addEventListener("click", slidingRight);
-sliderLeftBtn.addEventListener("click", slidingLeft);
+renderSlider(slides, sliderContainer, 1, containerL);
 
 // (function () {
 //   if (window.innerWidth <= 365) {

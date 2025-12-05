@@ -2,6 +2,7 @@ import {
   renderHighlight,
   renderThumbnails,
   capitalize,
+  renderSlider,
 } from "./general-functions.js";
 import { data } from "./db.js";
 
@@ -13,12 +14,16 @@ if (!product) throw new Error("Error 404: Not found!");
 const logo = document.querySelector(".logo");
 
 // PRODUCT ELEMENTS
+const productPresentation = document.querySelector(
+  ".product__page-presentation"
+);
 const productTitle = document.querySelector(".product__page-title");
 const productCategory = document.querySelector(".category");
 const productPrice = document.querySelector(".price");
 
 // GALLERY
-const gallery = document.querySelector(".gallery-grid");
+const gallery = document.querySelector(".gallery");
+const galleryGrid = document.querySelector(".gallery-grid");
 const galleryModal = document.querySelector(".gallery__modal");
 const closeModal = document.querySelector(".close__modal");
 const imgModal = document.querySelector(".img__modal");
@@ -30,23 +35,39 @@ const quantityDecrement = document.querySelector(".quantity__decrement");
 // TABS
 const tabsContainer = document.querySelector(".tabs__list");
 const tabContent = document.querySelector(".tab__content");
+const gallerySliderContainer = document.querySelector(".gallery-slider");
 
-product.url.forEach((el, i, arr) => {});
+let gallerySlide;
 // Product initialization
 (function () {
   productTitle.textContent = product.title;
   productPrice.textContent = product.price;
   productCategory.textContent = capitalize(product.category);
   tabContent.innerHTML = product.description;
-  renderHighlight(product, gallery);
-  renderThumbnails(product, gallery);
+  if (window.innerWidth >= 768) {
+    renderHighlight(product, galleryGrid, "beforebegin");
+    renderThumbnails(product, galleryGrid, "beforeend");
+  } else {
+    renderThumbnails(product, gallerySliderContainer, "beforeend");
+    gallerySlide = document.querySelectorAll(".gallery__img");
+    renderSlider(gallerySlide, gallery, 0, productPresentation, 120, 0, 1);
+    productPresentation.classList.add("product__page-presentation-S");
+    gallery.classList.add("gallery-S");
+    gallerySliderContainer.classList.add("gallery-slider-S");
+    document
+      .querySelectorAll(".gallery__img")
+      .forEach((el) => el.classList.add("gallery__img-S"));
+    document
+      .querySelectorAll(".gallery-thumbnail")
+      .forEach((el) => el.classList.add("gallery-thumbnail-S"));
+  }
 })();
 
 const imgs = document.querySelectorAll(".gallery-thumbnail");
 const highlightImg = document.querySelector(".gallery-highlight");
-imgModal.src = highlightImg.src;
+//imgModal.src = highlightImg.src;
 logo.addEventListener("click", () => (window.location.pathname = ""));
-gallery.addEventListener("click", function (e) {
+galleryGrid.addEventListener("click", function (e) {
   if (!e.target.classList.contains("gallery-thumbnail")) return;
   highlightImg.src = e.target.src;
   imgModal.src = highlightImg.src;
@@ -63,9 +84,6 @@ quantityDecrement.addEventListener("click", () => {
   quantity.value--;
 });
 
-highlightImg.addEventListener("click", () =>
-  galleryModal.classList.remove("fade-in")
-);
 closeModal.addEventListener("click", () =>
   galleryModal.classList.add("fade-in")
 );
@@ -94,7 +112,12 @@ function imageZoom(container, img) {
   }
 }
 
-imageZoom(container, img);
+if (window.innerWidth >= 576) {
+  highlightImg.addEventListener("click", () =>
+    galleryModal.classList.remove("fade-in")
+  );
+  imageZoom(container, img);
+}
 
 // TABS
 

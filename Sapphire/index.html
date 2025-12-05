@@ -71,7 +71,49 @@
           <li class="nav__item">
             <a href="#" class="nav__link contact">Contact</a>
           </li>
+          <li class="nav__item search-nav">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 search-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </li>
         </ul>
+        <div class="search__bar search__fade-in">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 search-icon"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+            />
+          </svg>
+          <input type="search" placeholder="Search" class="search-input" />
+
+          <button class="search__bar-close">X</button>
+        </div>
+
+        <div class="search__result search__fade-in">
+          <div class="search__result-content">
+            <h2 class="search__result-title">Products</h2>
+            <div class="search__result-list"></div>
+          </div>
+        </div>
       </nav>
 
       <div class="hero">
@@ -177,13 +219,6 @@
       <div class="section__main container-L">
         <div class="slider">
           <div class="products"></div>
-          <button class="slider__btn slider__btn-left slider__btn-top">
-            &#10094;
-          </button>
-          <button class="slider__btn slider__btn-right slider__btn-top">
-            &#10095;
-          </button>
-          <div class="dots"></div>
         </div>
       </div>
     </section>
