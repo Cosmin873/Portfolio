@@ -18,19 +18,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sapphire - The Most Modern Jewelry shop</title>
+    <title>Sapphire – Modern Jewelry Shop | Rings, Necklaces & Bracelets</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta description -->
     <meta
-      property="og:title"
-      content="Sapphire - The Most Modern Jewelry shop"
+      name="description"
+      content="Sapphire is a modern online jewelry shop offering handcrafted rings, necklaces and bracelets made from premium materials. Free shipping, secure payment and 1-year warranty."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="./img/logo.png" />
-    <meta property="og:url" content="https://sapphire/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sapphire – Modern Jewelry Shop" />
     <meta
       property="og:description"
-      content="Sapphire is the most modern jewelry shop. Take a look to our selection and pick you masterpiece today."
+      content="Discover handcrafted rings, necklaces and bracelets made from premium materials. Free shipping and 1-year warranty."
     />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sapphire-jewelries.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://sapphire-jewelries.netlify.app/img/logo.png"
+    />
     <meta property="og:site_name" content="Sapphire" />
+    <meta property="og:locale" content="en_US" />
+
     <link rel="icon" href="./img/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,6 +62,20 @@
     ></script>
 
     <script type="module" defer src="./script.js"></script>
+    <script defer type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "Sapphire",
+        "url": "https://sapphire-jewelries.netlify.app/",
+        "logo": "https://sapphire-jewelries.netlify.app/img/logo.png",
+        "description": "Modern online jewelry shop for handcrafted rings, necklaces and bracelets.",
+        "sameAs": [
+          "https://www.instagram.com/yourbrand-here",
+          "https://www.facebook.com/yourbrand-here"
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="header">
@@ -57,19 +84,37 @@
           src="./img/logo.png"
           class="logo header__logo"
           alt="Sapphire Logo"
+          loading="lazy"
         />
         <ul class="nav__menu">
           <li class="nav__item">
-            <a href="#section__2" class="nav__link link__scroll">Bestsellers</a>
+            <a
+              href="#section__2"
+              class="nav__link link__scroll"
+              aria-label="Go to Bestsellers section"
+              >Bestsellers</a
+            >
           </li>
           <li class="nav__item">
-            <a href="#section__3" class="nav__link link__scroll">Catalog</a>
+            <a
+              href="#section__3"
+              class="nav__link link__scroll"
+              aria-label="Go to Catalog section"
+              >Catalog</a
+            >
           </li>
           <li class="nav__item">
-            <a href="#section__4" class="nav__link link__scroll">About us</a>
+            <a
+              href="#section__4"
+              class="nav__link link__scroll"
+              aria-labels="Go to About-us section"
+              >About us</a
+            >
           </li>
           <li class="nav__item">
-            <a href="#" class="nav__link contact">Contact</a>
+            <a href="#" class="nav__link contact" aria-label="Open contact form"
+              >Contact</a
+            >
           </li>
           <li class="nav__item search-nav">
             <svg
@@ -119,9 +164,10 @@
       <div class="hero">
         <div class="hero-img-1">
           <img
-            src="./img/resized/hero-1.jpg"
+            src="./img/resized/hero-1.webp"
             class="img hero-img hero-img-main"
             alt="Jewelry Shop"
+            loading="lazy"
           />
           <div class="hero__title-1 text-shadow">
             <h3 class="hero__title hero__heading text-in">
@@ -138,9 +184,10 @@
         </div>
         <div class="hero-img-2">
           <img
-            src="./img/resized/hero-2.jpg"
+            src="./img/resized/hero-2.webp"
             class="img hero-img-side hero-2"
             alt="Women Jewelries"
+            loading="lazy"
           />
           <div class="hero__title-2 text-shadow">
             <h3 class="hero__title text-in">Women</h3>
@@ -148,9 +195,10 @@
         </div>
         <div class="hero-img-3">
           <img
-            src="./img/resized/hero-3.jpg"
+            src="./img/resized/hero-3.webp"
             class="img hero-img-side hero-3"
             alt="Men Jewelries"
+            loading="lazy"
           />
           <div class="hero__title-3 text-shadow">
             <h3 class="hero__title text-in">Men</h3>
@@ -234,7 +282,7 @@
       <div class="section__main container autofit-grid categories">
         <!-- <div class="category">
           <img
-            src="./img/ring.jpg"
+            src="./img/ring.webp"
             class="category__img img"
             alt="Ring category"
           />
@@ -261,15 +309,17 @@
         <div class="aligning">
           <img
             class="img about-us--img shadow"
-            src="/img/resized/redefining.jpg"
+            src="/img/resized/redefining.webp"
             alt=""
+            loading="lazy"
           />
         </div>
         <div class="aligning">
           <img
             class="img about-us--img shadow"
-            src="/img/resized/crafted.jpg"
+            src="/img/resized/crafted.webp"
             alt=""
+            loading="lazy"
           />
         </div>
         <div class="about-us--text">
@@ -291,8 +341,9 @@
         <div class="aligning">
           <img
             class="img about-us--img shadow"
-            src="/img/resized/feel.jpg"
+            src="/img/resized/feel.webp"
             alt=""
+            loading="lazy"
           />
         </div>
       </div>
@@ -301,7 +352,12 @@
     <footer class="footer">
       <div class="container">
         <div class="footer__header">
-          <img class="img footer__logo" alt="logo" src="./img/logo.png" />
+          <img
+            class="img footer__logo"
+            alt="logo"
+            src="./img/logo.png"
+            loading="lazy"
+          />
           <form class="newsletter__box">
             <h3 class="newsletter__title">Subscribe to our newsletter</h3>
             <input

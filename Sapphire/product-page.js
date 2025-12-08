@@ -10,6 +10,38 @@ const product = JSON.parse(localStorage.getItem("product"));
 console.log(product);
 if (!product) throw new Error("Error 404: Not found!");
 
+const injectProductSchema = function (product) {
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+
+  const data = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.title,
+    image: product.url.map(
+      (img) => new URL(img, "https://sapphire-jewelries.netlify.app/").href
+    ),
+    description: product.description || product.tag || "",
+    sku: product.code,
+    brand: {
+      "@type": "Brand",
+      name: "Sapphire",
+    },
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      url: "https://sapphire-jewelries.netlify.app/product-page.html",
+      priceCurrency: "EUR",
+      price: String(product.price).replace(",", "."),
+      availability: "https://schema.org/InStock",
+    },
+  };
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+};
+
+injectProductSchema(product);
+
 // NAVIGATION
 const logo = document.querySelector(".logo");
 
@@ -41,6 +73,7 @@ let gallerySlide;
 // Product initialization
 (function () {
   productTitle.textContent = product.title;
+  document.title = `${product.title} | Sapphire Jewelries`;
   productPrice.textContent = product.price;
   productCategory.textContent = capitalize(product.category);
   tabContent.innerHTML = product.description;
