@@ -1,5 +1,22 @@
 {
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0"
+  },
+  "name": "sapphire",
+  "version": "1.0.0",
+  "main": "db.js",
+  "scripts": {
+    "startParcel": "parcel index.html",
+    "buildParce": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Sapphire"
+  },
+  "author": "Cosmin Andreiescu",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.16.3"
   }
 }
