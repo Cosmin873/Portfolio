@@ -218,6 +218,16 @@ const submitContactFormFunc = function (e) {
       document.querySelector(".modal__error").classList.add("hidden");
     }, 10000);
   }
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString(),
+  })
+    .then(() => console.log("Form successfully submitted"))
+    .catch((error) => alert(error));
 };
 
 submitContactForm.addEventListener("click", submitContactFormFunc);
