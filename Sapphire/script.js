@@ -80,21 +80,27 @@ const navBarFunc = function (e) {
   }
 
   if (e.target.classList.contains("contact")) {
+    // document.querySelector(".contact__form").innerHTML = "";
+    //     const contactForm = document.querySelector(".contact__form");
+    // const contactSubmit = document.querySelector(".contact__submit");
     modal.classList.remove("fade-in");
     overlay.classList.remove("hidden");
-    formHTML = ` <input type="text" class="contact__input fs" placeholder="Your Name" name="name" />
-        <input type="email" class="contact__input" name="email" placeholder="Your Email" />
-        <input type="text" class="contact__input" placeholder="Subject" name="subject" />
-        <textarea
-          name="message"
-          id="message"
-          placeholder="Message (180 characters)"
-          maxlength="180"
-          class="contact__input"
-        ></textarea>
-        <button type="submit" class="contact__submit">Send</button>
-      `;
-    document.querySelector(".contact__form").innerHTML = formHTML;
+    // formHTML = ` <input type="text" class="contact__input fs" placeholder="Your Name" name="name" />
+    //     <input type="email" class="contact__input" name="email" placeholder="Your Email" />
+    //     <input type="text" class="contact__input" placeholder="Subject" name="subject" />
+    //     <textarea
+    //       name="message"
+    //       id="message"
+    //       placeholder="Message (180 characters)"
+    //       maxlength="180"
+    //       class="contact__input"
+    //     ></textarea>
+
+    //   `;
+    // document.querySelector(".contact__form").innerHTML = formHTML;
+    // document
+    // .querySelector(".contact__form")
+    // .insertAdjacentHTML("afterbegin", formHTML);
   }
 
   if (e.target.classList.contains("search-icon")) {
