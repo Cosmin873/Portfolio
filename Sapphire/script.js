@@ -230,7 +230,7 @@ const submitContactFormFunc = function (e) {
     .catch((error) => alert(error));
 };
 
-submitContactForm.addEventListener("click", submitContactFormFunc);
+submitContactForm.addEventListener("submit", submitContactFormFunc);
 
 cta.addEventListener("click", () =>
   document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
