@@ -26,6 +26,7 @@ Set with a choice of three, four, or five bezels set with round brilliant diamon
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [4, 3, 4, 5],
         code: "bptdr194",
       },
       {
@@ -48,6 +49,7 @@ Two(2) Round Brilliant Diamonds (approx 0.02 ctw, conflict-free, F color & VS cl
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [5, 4],
         code: "cadr589",
       },
       {
@@ -69,6 +71,7 @@ Five (5) Round Blue Sapphires (approx 0.04 ctw, conflict-free, F color & VS clar
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [5, 5, 5, 4, 5],
         code: "ytbsr219",
       },
       {
@@ -90,6 +93,7 @@ Five (5) Round Blue Sapphires (approx 0.04 ctw, conflict-free, F color & VS clar
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [4, 4, 5, 4, 3, 5],
         code: "sar723",
       },
       {
@@ -111,6 +115,7 @@ One (1) Emerald-Cut Natural Pink Tanzanite (approx 0.27 ctw / 5x3mm, AA grading)
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "unisex",
         occasion: ["casual"],
+        reviews: [],
         code: "rtbr174",
       },
     ],
@@ -193,6 +198,7 @@ One (1) Round White Sapphire (approx 0.04 ctw / 2.0mm, AA grading)`,
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [3],
         code: "swsn923",
       },
       {
@@ -216,6 +222,7 @@ Solid 14k gold with three bezels laid on a single 1.30 mm cable chain with a cho
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [4],
         code: "otn2830",
       },
       {
@@ -238,6 +245,7 @@ Eight (8) Round Lab-Grown Diamonds (approx 0.16 ctw/ 2.50mm, F color, VS clarity
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [4, 3],
         code: "dbn8st2030",
       },
     ],
@@ -325,6 +333,7 @@ One (1) Round Opal (approx 2.60 mm/ 0.06 ctw, AA grading)`,
         material: ["yellow gold", "white gold", "rose gold"],
         gender: "women",
         occasion: ["casual"],
+        reviews: [5, 3],
         code: "dwsob30301",
       },
       {
@@ -344,6 +353,7 @@ Hundred-Thirty-Two (132) Round Brilliant Cut Natural Diamonds (approx 0.48ctw, G
         material: ["yellow gold", "white gold"],
         gender: "unisex",
         occasion: ["casual"],
+        reviews: [4, 4, 3, 4, 5],
         code: "gldcb30202",
       },
       {
@@ -356,6 +366,7 @@ Hundred-Thirty-Two (132) Round Brilliant Cut Natural Diamonds (approx 0.48ctw, G
         material: ["yellow gold"],
         gender: "unisex",
         occasion: ["casual"],
+        reviews: [],
         code: "gpscb300103",
       },
     ],

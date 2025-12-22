@@ -169,3 +169,84 @@ tabsContainer.addEventListener("click", function (e) {
   e.target.closest(".tab__item").classList.add("tab-active");
   tabContent.innerHTML = content;
 });
+
+// REVIEW SYSTEM //
+
+const starsContainer = document.querySelector(".stars");
+const stars = document.querySelectorAll(".star");
+const reviewInfo = document.querySelector(".review__ratings");
+
+class Reviews {
+  #product;
+  #rating = 0;
+  #madeReview = false;
+
+  constructor() {
+    this.#getData();
+    this.#passiveState();
+    starsContainer.addEventListener(
+      "mouseenter",
+      this.#mouseOver.bind(this),
+      true
+    );
+    starsContainer.addEventListener(
+      "mouseleave",
+      this.#passiveState.bind(this)
+    );
+    starsContainer.addEventListener("click", this.#addReview.bind(this));
+  }
+
+  #getData() {
+    this.#product = data[product.category].products.find(
+      (item) => item.code === product.code
+    );
+    const averageRating = this.#product.reviews.length
+      ? (
+          this.#product.reviews?.reduce((acc, val) => acc + val, 0) /
+          this.#product.reviews.length
+        ).toFixed(1)
+      : 0;
+    this.#rating = +averageRating;
+    reviewInfo.textContent = `(${averageRating} / 5, ${
+      this.#product.reviews.length
+    } ${this.#product.reviews.length === 1 ? "review" : "reviews"})`;
+  }
+
+  #handleStars(id) {
+    [...stars].forEach((star) => {
+      +star.dataset.star <= id
+        ? (star.style.fill = "#64b4c5")
+        : (star.style.fill = "none");
+    });
+  }
+
+  #passiveState() {
+    this.#handleStars(this.#rating);
+  }
+
+  #mouseOver(e) {
+    const id = +e.target.dataset.star;
+    const selectedStar = e.target.classList.contains("star");
+    if (!selectedStar) return;
+    this.#handleStars(id);
+  }
+
+  #addReview(e) {
+    // Check if a previous review is made
+    if (this.#product.madeReview) return;
+
+    // Get the id
+    const ids = +e.target.closest(".star").dataset.star;
+    if (!ids) return;
+
+    // Push the new review to the db
+    this.#product.reviews.push(ids);
+
+    // Get the new data and parse it
+    this.#getData();
+
+    this.#product.madeReview = true;
+  }
+}
+
+new Reviews();

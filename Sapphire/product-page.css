@@ -160,15 +160,28 @@
   color: var(--color-primary);
 }
 
-.review__ratings {
+.review__content {
   font-size: 2.2rem;
-  color: var(--color-primary-lighter);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .stars {
   font-size: 3rem;
-  width: 4rem;
-  height: 4rem;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.star {
+  stroke: var(--color-primary);
+  height: 3rem;
+  cursor: pointer;
+}
+
+.review__ratings {
+  font-size: 2.2rem;
+  color: var(--color-primary-lighter);
 }
 
 .product__page-price {

@@ -218,7 +218,7 @@ const submitContactFormFunc = function (e) {
       document.querySelector(".modal__error").classList.add("hidden");
     }, 10000);
   }
-  const myForm = event.target;
+  const myForm = e.target;
   const formData = new FormData(myForm);
 
   fetch("/", {
