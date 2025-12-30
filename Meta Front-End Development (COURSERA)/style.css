@@ -202,7 +202,14 @@ select option {
 }
 
 .img-grid-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.7);
+  transition: transform 1s;
+}
+
+.img-container {
+  overflow: hidden;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 }
 
 .header-secondary {

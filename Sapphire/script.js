@@ -58,7 +58,7 @@ const getEmails = function () {
 };
 getEmails();
 console.log(emailList);
-
+data.init();
 // **NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL** //
 
 const navBarFunc = function (e) {

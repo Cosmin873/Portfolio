@@ -5,10 +5,17 @@ import {
   renderSlider,
 } from "./general-functions.js";
 import { data } from "./db.js";
-
+const db = data.load();
+console.log(db);
 const product = JSON.parse(localStorage.getItem("product"));
 console.log(product);
+
+const activeProduct = db[product.category].products.find(
+  (prod) => prod.code === product.code
+);
+console.log(activeProduct);
 if (!product) throw new Error("Error 404: Not found!");
+window.location.hash = product.code;
 
 const injectProductSchema = function (product) {
   const script = document.createElement("script");
@@ -197,9 +204,7 @@ class Reviews {
   }
 
   #getData() {
-    this.#product = data[product.category].products.find(
-      (item) => item.code === product.code
-    );
+    this.#product = activeProduct;
     const averageRating = this.#product.reviews.length
       ? (
           this.#product.reviews?.reduce((acc, val) => acc + val, 0) /
@@ -245,6 +250,8 @@ class Reviews {
     // Get the new data and parse it
     this.#getData();
 
+    data.save();
+    console.log(this.#product);
     this.#product.madeReview = true;
   }
 }

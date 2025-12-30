@@ -448,9 +448,40 @@ International:<br/>
     ];
   },
 
-  createCode() {
-    console.log(Math.random() * 10);
+  get dbProducts() {
+    return {
+      rings: this.rings,
+      necklaces: this.necklaces,
+      bracelets: this.bracelets,
+    };
+  },
+
+  save() {
+    // const db = {
+    //   rings: this.rings,
+    //   necklaces: this.necklaces,
+    //   bracelets: this.bracelets,
+    // };
+    localStorage.setItem("sapphire-db", JSON.stringify(this.dbProducts));
+  },
+
+  load() {
+    return JSON.parse(localStorage.getItem("sapphire-db"));
+  },
+
+  init() {
+    const db = this.load();
+    if (db) {
+      this.rings = db.rings;
+      this.necklaces = db.necklaces;
+      this.bracelets = db.bracelets;
+    } else {
+      localStorage.removeItem("sapphire-db");
+      this.save();
+    }
   },
 };
+
+data.init();
 
 const emails = [];
