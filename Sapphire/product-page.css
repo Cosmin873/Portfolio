@@ -283,6 +283,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   list-style: none;
 }
 
@@ -329,7 +330,15 @@ footer {
 /* MEDIA QUERIES - RESPONSIVENESS */
 
 @media (max-width: 760px) {
+  .product__page-presentation {
+    max-width: 40rem;
+  }
   .product__page-grid {
     grid-template-columns: 1fr;
+  }
+  .product__page-information {
+  }
+  .tabs__list {
+    justify-content: center;
   }
 }
