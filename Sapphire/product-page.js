@@ -20,6 +20,7 @@ import Database from "./db.js";
 if (!window.location.hash) window.location.pathname = "index.html";
 const id = window.location.hash.slice(1);
 const product = Database.findProduct(id);
+const db = JSON.parse(localStorage.getItem("sapphire-db"));
 
 const injectProductSchema = function (product) {
   const script = document.createElement("script");
@@ -164,7 +165,7 @@ if (window.innerWidth >= 576) {
 }
 
 // TABS
-
+console.log(product);
 tabsContainer.addEventListener("click", function (e) {
   if (!e.target.classList.contains("tab__btn")) return;
   const type = e.target.dataset.type;
@@ -172,7 +173,7 @@ tabsContainer.addEventListener("click", function (e) {
 
   const content = product[type]
     ? product[type]
-    : data[category]["category_info"][type];
+    : db[category]["category_info"][type];
 
   document
     .querySelectorAll(".tab__item")
@@ -332,143 +333,143 @@ class Reviews {
 
 new Reviews();
 
-// **NAV BUTTONS + CONTACT FORM MODAL** //
-const navContainer = document.querySelector(".nav__menu");
-const navBarFunc = function (e) {
-  if (e.target.classList.contains("contact")) {
-    modal.classList.remove("fade-in");
-    overlay.classList.remove("hidden");
-  }
+// // **NAV BUTTONS + CONTACT FORM MODAL** //
+// const navContainer = document.querySelector(".nav__menu");
+// const navBarFunc = function (e) {
+//   if (e.target.classList.contains("contact")) {
+//     modal.classList.remove("fade-in");
+//     overlay.classList.remove("hidden");
+//   }
 
-  if (e.target.classList.contains("search-icon")) {
-    searchBarDOM.classList.remove("search__fade-in");
-    searchInput.value = "";
-    setTimeout(() => searchInput.focus(), 1000);
-    search = [];
-  }
-};
+//   if (e.target.classList.contains("search-icon")) {
+//     searchBarDOM.classList.remove("search__fade-in");
+//     searchInput.value = "";
+//     setTimeout(() => searchInput.focus(), 1000);
+//     search = [];
+//   }
+// };
 
-navContainer.addEventListener("click", navBarFunc);
+// navContainer.addEventListener("click", navBarFunc);
 
-// CLOSE BUTTONS
+// // CLOSE BUTTONS
 
-const closeSearchBar = function () {
-  searchBarDOM.classList.add("search__fade-in");
-  searchResultBar.classList.add("search__fade-in");
-  resetSearchResults();
-  search = [];
-};
+// const closeSearchBar = function () {
+//   searchBarDOM.classList.add("search__fade-in");
+//   searchResultBar.classList.add("search__fade-in");
+//   resetSearchResults();
+//   search = [];
+// };
 
-const closeModalBtn = function () {
-  modal.classList.add("fade-in");
-  overlay.classList.add("hidden");
-  document.querySelector(".modal__error").classList.add("hidden");
-};
+// const closeModalBtn = function () {
+//   modal.classList.add("fade-in");
+//   overlay.classList.add("hidden");
+//   document.querySelector(".modal__error").classList.add("hidden");
+// };
 
-searchBarClose.addEventListener("click", closeSearchBar);
+// searchBarClose.addEventListener("click", closeSearchBar);
 
-closeModal.addEventListener("click", closeModalBtn);
+// closeModal.addEventListener("click", closeModalBtn);
 
-// SEARCH BAR
+// // SEARCH BAR
 
-const searchingDB = function (input) {
-  for (const [key, values] of Object.entries(data)) {
-    if (!values.products) continue;
-    // console.log(values);
-    values.products.forEach((el) => {
-      if (el.title.toLowerCase().includes(input)) searchResult.push(el);
-    });
-  }
-};
-searchInput.addEventListener("keydown", function (e) {
-  // if (searchResultList)
-  //   [searchResultList].forEach((el) =>
-  //     el.querySelectorAll(".product").forEach((t) => t.remove())
-  //   );
-  // if (searchResultItem)
-  //   searchResultItem.forEach((el) => console.log("aici", el));
+// const searchingDB = function (input) {
+//   for (const [key, values] of Object.entries(data)) {
+//     if (!values.products) continue;
+//     // console.log(values);
+//     values.products.forEach((el) => {
+//       if (el.title.toLowerCase().includes(input)) searchResult.push(el);
+//     });
+//   }
+// };
+// searchInput.addEventListener("keydown", function (e) {
+//   // if (searchResultList)
+//   //   [searchResultList].forEach((el) =>
+//   //     el.querySelectorAll(".product").forEach((t) => t.remove())
+//   //   );
+//   // if (searchResultItem)
+//   //   searchResultItem.forEach((el) => console.log("aici", el));
 
-  resetSearchResults();
-  if (e.key === "Backspace") {
-    search.pop();
-  } else search.push(e.key);
-  const searchValue = search.join("");
-  searchingDB(searchValue);
-  renderProducts(
-    searchResult,
-    searchResultList,
-    "beforeend",
-    "search__product"
-  );
-  searchResultItem = document.querySelectorAll(".search__product");
-  searchResultList = document.querySelector(".search__result-list");
+//   resetSearchResults();
+//   if (e.key === "Backspace") {
+//     search.pop();
+//   } else search.push(e.key);
+//   const searchValue = search.join("");
+//   searchingDB(searchValue);
+//   renderProducts(
+//     searchResult,
+//     searchResultList,
+//     "beforeend",
+//     "search__product"
+//   );
+//   searchResultItem = document.querySelectorAll(".search__product");
+//   searchResultList = document.querySelector(".search__result-list");
 
-  if (searchResultItem.length >= 5) {
-    searchResultItem.forEach((item) => item.classList.add("search__product-S"));
-    renderSlider(
-      searchResultItem,
-      searchResultContent,
-      0,
-      searchResultBar,
-      120,
-      0,
-      4,
-      false
-    );
-  }
+//   if (searchResultItem.length >= 5) {
+//     searchResultItem.forEach((item) => item.classList.add("search__product-S"));
+//     renderSlider(
+//       searchResultItem,
+//       searchResultContent,
+//       0,
+//       searchResultBar,
+//       120,
+//       0,
+//       4,
+//       false
+//     );
+//   }
 
-  if (searchResultList)
-    [searchResultBar].forEach((el) =>
-      el.querySelectorAll(".dots").forEach((t) => t.remove())
-    );
-  if (search.length > 0) searchResultBar.classList.remove("search__fade-in");
-  if (search.length < 1 || !searchResultList)
-    searchResultBar.classList.add("search__fade-in");
-});
+//   if (searchResultList)
+//     [searchResultBar].forEach((el) =>
+//       el.querySelectorAll(".dots").forEach((t) => t.remove())
+//     );
+//   if (search.length > 0) searchResultBar.classList.remove("search__fade-in");
+//   if (search.length < 1 || !searchResultList)
+//     searchResultBar.classList.add("search__fade-in");
+// });
 
-// SUBMIT BUTTON
+// // SUBMIT BUTTON
 
-const submitContactFormFunc = function (e) {
-  e.preventDefault();
-  const elemente = this.closest(".modal")
-    .querySelector(".contact__form")
-    .querySelectorAll(".contact__input");
+// const submitContactFormFunc = function (e) {
+//   e.preventDefault();
+//   const elemente = this.closest(".modal")
+//     .querySelector(".contact__form")
+//     .querySelectorAll(".contact__input");
 
-  elemente.forEach((el) => {
-    if (el.value === "") {
-      el.style.backgroundColor = "rgba(255, 0, 72, 0.2)";
-      document.querySelector(".modal__error").classList.remove("hidden");
-      return;
-    }
-    if (el.value !== "") {
-      el.style.background = "none";
-    }
-  });
-  if ([...elemente].every((el) => el.value !== "")) {
-    document.querySelector(
-      ".contact__form"
-    ).innerHTML = `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
-    document.querySelector(".modal__error").classList.add("hidden");
-    setTimeout(function () {
-      modal.classList.add("fade-in");
-      overlay.classList.add("hidden");
-      document.querySelector(".modal__error").classList.add("hidden");
-    }, 10000);
-  }
-  const myForm = e.target;
-  const formData = new FormData(myForm);
+//   elemente.forEach((el) => {
+//     if (el.value === "") {
+//       el.style.backgroundColor = "rgba(255, 0, 72, 0.2)";
+//       document.querySelector(".modal__error").classList.remove("hidden");
+//       return;
+//     }
+//     if (el.value !== "") {
+//       el.style.background = "none";
+//     }
+//   });
+//   if ([...elemente].every((el) => el.value !== "")) {
+//     document.querySelector(
+//       ".contact__form"
+//     ).innerHTML = `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
+//     document.querySelector(".modal__error").classList.add("hidden");
+//     setTimeout(function () {
+//       modal.classList.add("fade-in");
+//       overlay.classList.add("hidden");
+//       document.querySelector(".modal__error").classList.add("hidden");
+//     }, 10000);
+//   }
+//   const myForm = e.target;
+//   const formData = new FormData(myForm);
 
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => console.log("Form successfully submitted"))
-    .catch((error) => alert(error));
-};
+//   fetch("/", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: new URLSearchParams(formData).toString(),
+//   })
+//     .then(() => console.log("Form successfully submitted"))
+//     .catch((error) => alert(error));
+// };
 
-submitContactForm.addEventListener("submit", submitContactFormFunc);
+// submitContactForm.addEventListener("submit", submitContactFormFunc);
 
-cta.addEventListener("click", () =>
-  document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
-);
+// cta.addEventListener("click", () =>
+//   document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
+// );
