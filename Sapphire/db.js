@@ -6,6 +6,7 @@ export const data = {
         title: "Bohemian Pursuit Three Diamond Ring",
         description:
           "With a bohemian flair, this petite ring designed with beaded bezels set with diamonds that is evenly spaces on top of the ring is a unique wedding ring to pair with your dainty engagement ring.",
+        category: "rings",
         details: `Solid 14k gold 1.00 - 2.00 mm and 1.60 mm high band (available in yellow, white, or rose gold).
 
 Set with a choice of three, four, or five bezels set with round brilliant diamonds, conflict-free, F color, VS clarity:
@@ -33,6 +34,7 @@ Set with a choice of three, four, or five bezels set with round brilliant diamon
         title: "Celestia Aquamarine Diamond Ring",
         description:
           "We designed the Celestia to be the perfect blend of sweet and minimal - matching the gemstones to the colors of fall with some rich oranges, reds, and more. Time to celebrate yourself or the one you love with this beautiful fall minimal ring.",
+        category: "rings",
         details: `Solid 14k gold 1.05 mm wide and 1.00 mm thick three stone setting.
 
 Set with:
@@ -56,6 +58,7 @@ Two(2) Round Brilliant Diamonds (approx 0.02 ctw, conflict-free, F color & VS cl
         title: "Yours Truly Blue Sapphire Ring",
         description:
           "A dainty everyday essential to your lookbook. This stackable ring enhances your outfit from day to night. It is a gorgeous stackable ring that features five round blue sapphires evenly spaced out between open braids - a gift that you deserve",
+        category: "rings",
         details: `Solid 14k gold setting with a 2.00 mm wide and 1.00 - 1.20 mm high thick band (available in yellow, white, or rose gold)
 
 Set with:
@@ -78,6 +81,7 @@ Five (5) Round Blue Sapphires (approx 0.04 ctw, conflict-free, F color & VS clar
         title: "Sequin Amethyst Ring",
         description:
           "A timeless, elegant and sophisticated accessory for any occasion. This ring is designed to draw attention and make a statement. Featuring our custom cut design, with a special way of mixing metallic sequins and gemstones to create a truly unique look every time it is worn",
+        category: "rings",
         details: `Solid 14k gold setting with a 2.00 mm wide and 1.00 - 1.20 mm high thick band (available in yellow, white, or rose gold)
 
 Set with:
@@ -100,6 +104,7 @@ Five (5) Round Blue Sapphires (approx 0.04 ctw, conflict-free, F color & VS clar
         title: "Ruthie Tanzanite Bezel Ring",
         description:
           "This solitaire features an emerald-cut stone nestled in a sleek bezel setting that's equal parts protective and chic. Whether you're the type to wear it every single day or save it for moments that deserve a little extra sparkle, this ring is ready for whatever you throw at it. Classic, versatile, and undeniably lovely",
+        category: "rings",
         details: `Solid 14k gold 1.90mm wide band (available in yellow, white, or rose gold)
 
 Set with:
@@ -183,6 +188,7 @@ International:<br/>
         description: `Inspired by Project Semicolon, the semicolon was chosen because in literature a semicolon is used when an author chooses to not end a sentence. You are the author and the sentence is your life. You are choosing to continue. Together we will raise money to show our support and solidarity for more mental health awareness as well as destigmatizing mental illness.
 
 10% of the proceeds from our Semicolon Necklace Collection will be donated to Project Semicolon. "Your story is not over"`,
+        category: "necklaces",
         details: `Solid 14k gold 1.30 mm cable chain necklace, choice of 16" or 18" length.
 
 Set with:
@@ -204,6 +210,7 @@ One (1) Round White Sapphire (approx 0.04 ctw / 2.0mm, AA grading)`,
       {
         title: "Orion's Tanzanite Necklace",
         description: `This necklace is a symbol of the person who shines the brightest in our lives. As part of our birthstone collection, this necklace can be personalized to your lovely self or other half.`,
+        category: "necklaces",
         details: `Solid 14k gold with three bezels laid on a single 1.30 mm cable chain with a choice of 16" or 18" length (available in yellow, white, or rose).
 
 Set with:
@@ -228,6 +235,7 @@ Solid 14k gold with three bezels laid on a single 1.30 mm cable chain with a cho
       {
         title: "8-stone Diamond Bar Necklace - 0.50CTW",
         description: `A refined take on a classic design, this necklace features a sleek bar set with shimmering diamonds. Minimal yet elegant, it’s perfect for everyday wear or layering with other pieces. A timeless staple for any jewelry collection.`,
+        category: "necklaces",
         details: `Solid 14k gold 1.00 mm cable chain, 18" chain length (available in yellow, white, or rose gold).
 
 Pendant dimensions: approx 25.9 x 4.4 mm
@@ -317,6 +325,7 @@ International:
       {
         title: "Duo White Sapphire Opal Bracelet",
         description: `Add a chic touch to any outfit with this minimal, everyday Duo White Sapphire Opal Bracelet. Crafted from opal and white sapphire, this pairing of birthstones creates a sophisticated, timeless look that will never go out of style.`,
+        category: "bracelets",
         details: `Solid 14k gold approx 0.11" x 0.24" single setting on a 1.50 mm 7" length cable chain (available in yellow, white, or rose gold).
 
 Set with:
@@ -339,6 +348,7 @@ One (1) Round Opal (approx 2.60 mm/ 0.06 ctw, AA grading)`,
       {
         title: "4.25mm Gold Link Diamond Chain Bracelet",
         description: `A bold yet refined statement, this bracelet showcases classic gold links accented with sparkling diamonds for just the right touch of brilliance. The 4.25mm width gives it a substantial feel, making it perfect for everyday wear or layering with other favorites. A modern essential with timeless appeal.`,
+        category: "bracelets",
         details: `Solid 14k gold 4.25 mm link chain style 7.25" in length with a hidden clasp (available only in yellow gold).
 
 Set with:
@@ -359,6 +369,7 @@ Hundred-Thirty-Two (132) Round Brilliant Cut Natural Diamonds (approx 0.48ctw, G
       {
         title: "6.2mm Gold Paperclip-Style Chain Bracelet",
         description: `Beautifully crafted, this paperclip bracelet is a timeless accessory that adds elegance to any outfit. Its lightweight design and secure lobster clasp make it comfortable to wear for extended periods, while the classic cable chain style ensures it is versatile and always in fashion. This bracelet is the perfect gift or addition to any jewelry collection, providing a touch of sophistication that will last a lifetime.`,
+        category: "bracelets",
         details: `Solid 14k gold 6.2 mm (approx 7" in length) paperclip-style chain with lobster clasp (available in yellow gold only).`,
         price: 1605,
         url: ["./img/products/bracelets/gpscb/gpscbyg.jpg"],
@@ -456,32 +467,73 @@ International:<br/>
     };
   },
 
-  save() {
-    // const db = {
-    //   rings: this.rings,
-    //   necklaces: this.necklaces,
-    //   bracelets: this.bracelets,
-    // };
-    localStorage.setItem("sapphire-db", JSON.stringify(this.dbProducts));
-  },
+  // save() {
 
-  load() {
-    return JSON.parse(localStorage.getItem("sapphire-db"));
-  },
+  //   localStorage.setItem("sapphire-db", JSON.stringify(this.dbProducts));
+  // },
 
-  init() {
-    const db = this.load();
-    if (db) {
-      this.rings = db.rings;
-      this.necklaces = db.necklaces;
-      this.bracelets = db.bracelets;
-    } else {
-      localStorage.removeItem("sapphire-db");
-      this.save();
-    }
-  },
+  // load() {
+  //   return JSON.parse(localStorage.getItem("sapphire-db"));
+  // },
+
+  // init() {
+  //   const db = this.load();
+  //   if (db) {
+  //     this.rings = db.rings;
+  //     this.necklaces = db.necklaces;
+  //     this.bracelets = db.bracelets;
+  //   } else {
+  //     localStorage.removeItem("sapphire-db");
+  //     this.save();
+  //   }
+  // },
 };
 
-data.init();
+class Database {
+  #data;
+
+  constructor() {
+    this.#checkStorage();
+  }
+
+  #checkStorage() {
+    this.#getStorage();
+    if (!this.#data) {
+      this.#setStorage(data.dbProducts);
+      this.#getStorage();
+    }
+  }
+
+  #getStorage() {
+    this.#data = JSON.parse(localStorage.getItem("sapphire-db"));
+  }
+
+  #setStorage(data) {
+    localStorage.setItem("sapphire-db", JSON.stringify(data));
+  }
+
+  // findProduct(category, criteria, value) {
+  //   return this.#data[category].products.find(
+  //     (product) => product[criteria] === value
+  //   );
+  // }
+  findProduct(code) {
+    return Object.values(this.#data)
+      .flatMap((el) => el.products)
+      .find((prod) => prod.code === code);
+  }
+
+  saveData() {
+    //   localStorage.removeItem("sapphire-db");
+    this.#setStorage(this.#data);
+    this.#getStorage();
+  }
+
+  logData() {
+    console.log(this.#data);
+  }
+}
+
+export default new Database();
 
 const emails = [];

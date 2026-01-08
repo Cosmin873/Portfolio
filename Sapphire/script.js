@@ -58,7 +58,7 @@ const getEmails = function () {
 };
 getEmails();
 console.log(emailList);
-data.init();
+
 // **NAV BUTTONS: SMOOTH SCROLLING + CONTACT FORM MODAL** //
 
 const navBarFunc = function (e) {
@@ -102,16 +102,23 @@ const navBarFunc = function (e) {
     // .querySelector(".contact__form")
     // .insertAdjacentHTML("afterbegin", formHTML);
   }
-
-  if (e.target.classList.contains("search-icon")) {
-    searchBarDOM.classList.remove("search__fade-in");
-    searchInput.value = "";
-    setTimeout(() => searchInput.focus(), 1000);
-    search = [];
-  }
 };
 
 navContainer.addEventListener("click", navBarFunc);
+
+document
+  .querySelector(".account__list")
+  .addEventListener("click", function (e) {
+    const btn = e.target.closest(".acc__item");
+    if (!btn) return;
+    console.log(btn);
+    if (btn.classList.contains("search-nav")) {
+      searchBarDOM.classList.remove("search__fade-in");
+      searchInput.value = "";
+      setTimeout(() => searchInput.focus(), 1000);
+      search = [];
+    }
+  });
 
 // CLOSE BUTTONS
 
@@ -248,40 +255,40 @@ productsDOM.addEventListener("mouseover", cardImgSlider(data.bestsellers));
 productsDOM.addEventListener("mouseout", cardImgSliderReset(data.bestsellers));
 
 // Product page
-
+// --------------------------------------------
 // Sending product information to another file
 
-const redirectToProductPage = function (e) {
-  // Get the product code
-  const code = e.target.closest(".product").querySelector(".product__img")
-    .dataset.code;
+// const redirectToProductPage = function (e) {
+//   // Get the product code
+//   const code = e.target.closest(".product").querySelector(".product__img")
+//     .dataset.code;
 
-  // Find the product in the database
-  const product = data.allProducts.find((el) => el.code === code);
+//   // Find the product in the database
+//   const product = data.allProducts.find((el) => el.code === code);
 
-  // Finding the category
-  const findingCategory = function (byProduct) {
-    for (const [key, value] of Object.entries(data)) {
-      if (!value || !value.products) continue;
-      if (value.products.includes(byProduct)) byProduct.category = key;
-    }
-    console.log(byProduct);
-  };
-  findingCategory(product);
+//   // Finding the category
+//   const findingCategory = function (byProduct) {
+//     for (const [key, value] of Object.entries(data)) {
+//       if (!value || !value.products) continue;
+//       if (value.products.includes(byProduct)) byProduct.category = key;
+//     }
+//     console.log(byProduct);
+//   };
+//   findingCategory(product);
 
-  // Delete the localStorage
-  localStorage.removeItem("product");
+//   // Delete the localStorage
+//   localStorage.removeItem("product");
 
-  // Add the product to the localStorage
-  localStorage.setItem("product", JSON.stringify(product));
+//   // Add the product to the localStorage
+//   localStorage.setItem("product", JSON.stringify(product));
 
-  // Redirect to the product page
-  window.location.pathname = "/product-page.html";
-};
+//   // Redirect to the product page
+//   window.location.pathname = "/product-page.html";
+// };
 
-productsDOM.addEventListener("click", redirectToProductPage);
-searchResultList.addEventListener("click", redirectToProductPage);
-
+// productsDOM.addEventListener("click", redirectToProductPage);
+// searchResultList.addEventListener("click", redirectToProductPage);
+// --------------------------------------------------------------
 // Our Selection (Catalog)
 
 // Rendering the categories

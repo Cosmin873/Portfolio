@@ -8,8 +8,8 @@ const capitalize = function (input) {
 const renderProducts = function (source, target, insertOrder, optClass = "") {
   source.forEach((el, id) => {
     const html = `<div class="product ${optClass}" data-id = "${id++}"> 
-   
-     <div class="product__img-container">
+   <a href="./product-page.html#${el.code}">
+     <figure class="product__img-container">
 <img
             src="${el.url[0]}"
             class="product__img img img-slider"
@@ -17,7 +17,7 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
             data-code="${el.code}"
             
           />
-  </div>
+  </figure>
           <div class="product__information">
           <h4 class="product__title">${el.title}</h4>
           <h5 class="product__material-title">Colors:</h5>
@@ -26,7 +26,7 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
             .join("")}</ul>
           <p class="product__price">${el.price} EUR</p>
           </div>
-  
+  </a>
         </div>`;
 
     target.insertAdjacentHTML(insertOrder, html);
