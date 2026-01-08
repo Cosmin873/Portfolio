@@ -494,6 +494,7 @@ class Database {
 
   constructor() {
     this.#checkStorage();
+    this.#updateData();
   }
 
   #checkStorage() {
@@ -527,6 +528,13 @@ class Database {
     //   localStorage.removeItem("sapphire-db");
     this.#setStorage(this.#data);
     this.#getStorage();
+    this.#updateData();
+  }
+
+  #updateData() {
+    data.rings.products = this.#data.rings.products;
+    data.necklaces.products = this.#data.necklaces.products;
+    data.bracelets.products = this.#data.bracelets.products;
   }
 
   logData() {

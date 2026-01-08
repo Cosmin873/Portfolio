@@ -155,6 +155,8 @@
   color: var(--color-primary);
 }
 
+/* Review System */
+
 .review__system-title {
   font-size: 2.8rem;
   color: var(--color-primary);
@@ -183,6 +185,8 @@
   font-size: 2.2rem;
   color: var(--color-primary-lighter);
 }
+
+/*  */
 
 .product__page-price {
   font-size: 3.2rem;

@@ -271,6 +271,39 @@
   background-color: var(--color-primary-darker);
 }
 
+/* Review System */
+
+.review__system-title {
+  font-size: 2.8rem;
+  color: var(--color-primary);
+}
+
+.review__content {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  margin-top: -2.2rem;
+  gap: 1rem;
+}
+
+.stars {
+  font-size: 3rem;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.star {
+  stroke: var(--color-primary);
+  height: 2rem;
+}
+
+.review__ratings {
+  font-size: 1.6rem;
+  color: var(--color-primary-lighter);
+}
+
+/*  */
+
 /*********************/
 .product__img-container {
   overflow: hidden;

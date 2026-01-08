@@ -246,6 +246,7 @@ cta.addEventListener("click", () =>
 // Bestsellers Section
 
 renderProducts(data.bestsellers, productsDOM, "beforeend", "product-slider"); // render the products in the slider (source, target, insertOrder)
+
 /////////////////
 
 // Bestseller changing image at 1.5s based on materials
@@ -457,11 +458,3 @@ newsletterSubmitBtn.addEventListener("click", function (e) {
   newsletterInputField.value = "";
   localStorage.setItem("emails", JSON.stringify(emailList));
 });
-
-const getAllProducts = async function (url) {
-  const response = await fetch(url);
-  const json = await response.json();
-  console.log(json);
-};
-
-getAllProducts("https://dummyjson.com/products/category/womens-jewellery");
