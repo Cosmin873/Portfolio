@@ -31,6 +31,7 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
             data-code="${el.code}"
             
           />
+          <div class="action__btn-container"></div>
   </figure>
           
           <div class="product__information">
@@ -146,8 +147,8 @@ const cardImgSlider = function (source) {
     const prod = source.find((x) => x.code === code);
     if (prod.url.length === 1) return;
     if (i >= prod.url.length) i = 0;
-    console.log(e.target);
-    console.log(prod);
+    // console.log(e.target);
+    // console.log(prod);
     i++;
     e.target.src = prod.url[i];
     interval = setInterval(function () {

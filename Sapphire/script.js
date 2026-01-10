@@ -252,6 +252,23 @@ renderProducts(data.bestsellers, productsDOM, "beforeend", "product-slider"); //
 // Bestseller changing image at 1.5s based on materials
 
 productsDOM.addEventListener("mouseover", cardImgSlider(data.bestsellers));
+productsDOM.addEventListener("mouseover", function (e) {
+  const hoverProduct = e.target.closest(".product");
+  if (!hoverProduct) return;
+  const btnContainer = hoverProduct.querySelector(".action__btn-container");
+  btnContainer.innerHTML = "";
+  console.log(hoverProduct, btnContainer);
+  const html = `
+  <div class="action__btns">
+  <div class="btn1"></div>
+  <div class="btn2"></div>
+  </div>
+  `;
+  btnContainer.insertAdjacentHTML("beforeend", html);
+});
+productsDOM.addEventListener("mouseout", function (e) {
+  // console.log("nu merge");
+});
 
 productsDOM.addEventListener("mouseout", cardImgSliderReset(data.bestsellers));
 
