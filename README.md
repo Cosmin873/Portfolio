@@ -41,7 +41,7 @@ My name is Cosmin Andreiescu and I am an aspiring web developer that is eager to
 - **Guess My Number Game**: https://guessmynumber-app.netlify.app/
 - **Pig Game**: https://roll-dice-pg.netlify.app/
 
-## CodePen projects:
+### CodePen projects:
 
 Please copy and paste the link into your browser:
 
