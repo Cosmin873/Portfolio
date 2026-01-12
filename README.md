@@ -33,13 +33,25 @@ My name is Cosmin Andreiescu and I am an aspiring web developer that is eager to
 
 ## Projects:
 
-- Forkify App: https://forkify-food-recipes-app.netlify.app/
-- Mapty App: https://mapty-tracking-app.netlify.app/
-- Bankist App: https://bankist-banking-app.netlify.app/
-- Bankist Website: https://bankist-banking-website-app.netlify.app/
-- Omnifood Website: https://omnifoodwebsite-portfolio.netlify.app/
-- Guess My Number Game: https://guessmynumber-app.netlify.app/
-- Pig Game: https://roll-dice-pg.netlify.app/
+- **Forkify App**: https://forkify-food-recipes-app.netlify.app/
+- **Mapty App**: https://mapty-tracking-app.netlify.app/
+- **Bankist App**: https://bankist-banking-app.netlify.app/
+- **Bankist Website**: https://bankist-banking-website-app.netlify.app/
+- **Omnifood Website**: https://omnifoodwebsite-portfolio.netlify.app/
+- **Guess My Number Game**: https://guessmynumber-app.netlify.app/
+- **Pig Game**: https://roll-dice-pg.netlify.app/
+
+## CodePen projects:
+
+Please copy and paste the link into your browser:
+
+- **Calculator:** https://codepen.io/Cosmin-Andreiescu/pen/LEppwOe
+- **Rock, paper, scissors game:** https://codepen.io/Cosmin-Andreiescu/pen/LEpRjYw
+- **To-do list app:** https://codepen.io/Cosmin-Andreiescu/pen/azvbeRP
+- **Stop-watch:** https://codepen.io/Cosmin-Andreiescu/pen/ZYbzqgQ
+- **FAQ:** https://codepen.io/Cosmin-Andreiescu/pen/yyYBVQy
+- **Quote Generator:** https://codepen.io/Cosmin-Andreiescu/pen/bNdXvJg
+- **Pop-up (component):** https://codepen.io/Cosmin-Andreiescu/pen/qEdeQjM
 
 ## Let’s Connect
 
