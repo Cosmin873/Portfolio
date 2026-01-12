@@ -1,4 +1,4 @@
-# forkify Project
+# Forkify App
 
 ## Live website: https://forkify-food-recipes-app.netlify.app/
 

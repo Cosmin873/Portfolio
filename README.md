@@ -5,36 +5,45 @@ My name is Cosmin Andreiescu and I am an aspiring web developer that is eager to
 ## 🚀 Technologies & Skills
 
 ### Front-End
+
 - HTML5, Semantic Structure
 - CSS3, Flexbox, Grid, Responsive Design, Media Queries
 - JavaScript (ES6+)
   - DOM Manipulation
   - Events & Event Delegation
   - OOP & Classes
-  - Array Methods (`map`, `filter`, `reduce`)
-  
+  - Array Methods
+  - Async / Await
+  - Modules
+  - Data structures & project architecture: MVC Pattern / Publisher-subscriber pattern
+  - Performance optimization in JavaScript
 
 ### Tools & Workflow
-- Git & GitHub (commits, branches, pull requests)
+
+- Git & GitHub
 - VS Code
 - Chrome DevTools
 - NPM
 
-### Currently Learning
-- Modules
-- Asynchronous Logic Basics
-- Performance optimization in JavaScript
-- Data structures & project architecture
-- Preparing to move into React
-
 ## Certifications & Courses Completed And In Progress
+
 - Codecademy — Learn JavaScript Course
 - Udemy — Build Responsive Real-World Websites with HTML and CSS, The Complete JavaScript Course
 - Coursera — Introduction to Front-End Development, Programming with JavaScript, HTML and CSS in depth, Version Control, React Basics
 
+## Projects:
+
+- Forkify App: https://forkify-food-recipes-app.netlify.app/
+- Mapty App: https://mapty-tracking-app.netlify.app/
+- Bankist App: https://bankist-banking-app.netlify.app/
+- Bankist Website: https://bankist-banking-website-app.netlify.app/
+- Guess My Number Game: https://guessmynumber-app.netlify.app/
+- Pig Game: https://roll-dice-pg.netlify.app/
+
 ## Let’s Connect
-- **LinkedIn:** https://www.linkedin.com/in/cosmin-andreiescu-08399b101  
+
+- **LinkedIn:** https://www.linkedin.com/in/cosmin-andreiescu-08399b101
 - **Email:** cosmin.and117@gmail.com
 - **Goodreads:** https://www.goodreads.com/user/show/147340655-cosmin-andreiescu
 
- Feel free to explore my repositories — more projects are coming soon.
+Feel free to explore my repositories — more projects are coming soon.
