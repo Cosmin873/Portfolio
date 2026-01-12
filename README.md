@@ -37,6 +37,7 @@ My name is Cosmin Andreiescu and I am an aspiring web developer that is eager to
 - Mapty App: https://mapty-tracking-app.netlify.app/
 - Bankist App: https://bankist-banking-app.netlify.app/
 - Bankist Website: https://bankist-banking-website-app.netlify.app/
+- Omnifood Website: https://omnifoodwebsite-portfolio.netlify.app/
 - Guess My Number Game: https://guessmynumber-app.netlify.app/
 - Pig Game: https://roll-dice-pg.netlify.app/
 
