@@ -401,6 +401,12 @@ Large desktops: 1200px
   .footer .container {
     width: 100%;
   }
+  .footer__header {
+    text-align: center;
+  }
+  .newsletter__input {
+    margin-bottom: 2rem;
+  }
   .section__header {
     padding: 5rem;
   }
