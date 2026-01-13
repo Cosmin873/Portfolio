@@ -499,8 +499,18 @@ Large desktops: 1200px
 }
 
 @media (max-width: 576px) {
+  .dots {
+    transform: translate(-50%, 10%) scale(0.8);
+  }
   .footer .container {
     width: 100%;
+  }
+  .footer__header {
+    text-align: center;
+  }
+
+  .newsletter__input {
+    margin-bottom: 2rem;
   }
   .section__header {
     padding: 5rem;
