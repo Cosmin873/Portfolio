@@ -95,7 +95,16 @@ let gallerySlide;
   } else {
     renderThumbnails(product, gallerySliderContainer, "beforeend");
     gallerySlide = document.querySelectorAll(".gallery__img");
-    renderSlider(gallerySlide, gallery, 0, productPresentation, 120, 0, 1);
+    renderSlider(
+      gallerySlide,
+      gallery,
+      0,
+      productPresentation,
+      120,
+      0,
+      1,
+      false
+    );
     productPresentation.classList.add("product__page-presentation-S");
     gallery.classList.add("gallery-S");
     gallerySliderContainer.classList.add("gallery-slider-S");

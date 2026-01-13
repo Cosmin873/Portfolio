@@ -207,6 +207,7 @@
 
 .quantity__input {
   text-align: center;
+  text-wrap: nowrap;
 }
 
 .cta-input {
@@ -398,6 +399,38 @@ Large desktops: 1200px
 }
 
 @media (max-width: 576px) {
+  section {
+    margin-top: 0;
+  }
+  .product__page-grid {
+    margin: 0;
+  }
+  .product__page-layout {
+    margin-top: 0;
+  }
+
+  .product__page-title {
+    margin-top: 8rem;
+  }
+  /* .gallery-S {
+    transform: scale(0.9);
+  } */
+  .gallery-slider-S {
+    transform: scale(0.9);
+  }
+
+  .tabs__list {
+    display: grid;
+    text-align: left;
+  }
+
+  .slider__btn-left {
+    transform: translate(20%, 30%) !important;
+  }
+  .slider__btn-right {
+    transform: translate(-20%, 30%) !important;
+  }
+
   .footer .container {
     width: 100%;
   }
