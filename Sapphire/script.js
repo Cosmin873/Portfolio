@@ -7,7 +7,7 @@ import {
   cardImgSliderReset,
   renderSlider,
 } from "./general-functions.js";
-
+console.log("Test branch netlify");
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
 const navContainer = document.querySelector(".nav__menu");
