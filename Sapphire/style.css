@@ -343,7 +343,9 @@
 /* ABOUT US SECTION */
 
 .about-us {
-  grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr)); */
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
   justify-content: center;
   align-items: center;
   gap: 12rem;

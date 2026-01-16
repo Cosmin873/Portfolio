@@ -293,8 +293,13 @@
         </div>
       </div>
     </section>
-
-    <section class="section section__2" id="section__2">
+    <!-- 
+- Changed the section's style: margin: 0; padding: 9.6rem 0; CHECKED
+- FOR BESTSELELRS: Remove any container width from the section__main (container-L) 
+- Remove section__main paddings
+- Class "products" check height
+-->
+    <!-- <section class="section section__2" id="section__2">
       <div class="section__header">
         <h3 class="section__header-title text-in">Bestsellers</h3>
         <p class="section__header-description">The VIPs of our selection</p>
@@ -304,17 +309,34 @@
           <div class="products"></div>
         </div>
       </div>
+    </section> -->
+    <section class="section section__2" id="section__2">
+      <div class="section__header margin-bottom--none">
+        <div class="container">
+          <h3 class="section__header-title text-in">Bestsellers</h3>
+          <p class="section__header-description">The VIPs of our selection</p>
+        </div>
+      </div>
+      <div class="section__main">
+        <div class="slider">
+          <div class="products"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section__3" id="section__3">
       <div class="section__header">
-        <h3 class="section__header-title text-in">Our Selection</h3>
-        <p class="section__header-description">
-          Take a glance through our exclusive products and choose your
-          masterpiece
-        </p>
+        <div class="container">
+          <h3 class="section__header-title text-in">Our Selection</h3>
+          <p class="section__header-description">
+            Take a glance through our exclusive products and choose your
+            masterpiece
+          </p>
+        </div>
       </div>
-      <div class="section__main container autofit-grid categories">
+      <div
+        class="section__main container autofit-grid categories grid--center-items"
+      >
         <!-- <div class="category">
           <img
             src="./img/ring.webp"
@@ -330,8 +352,10 @@
 
     <section class="section section__4" id="section__4">
       <div class="section__header">
-        <h3 class="section__header-title text-in">About Us</h3>
-        <p class="section__header-description">Get to know us</p>
+        <div class="container">
+          <h3 class="section__header-title text-in">About Us</h3>
+          <p class="section__header-description">Get to know us</p>
+        </div>
       </div>
       <div class="section__main about-us autofit-grid">
         <div class="about-us--text">
