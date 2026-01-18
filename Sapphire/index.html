@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
@@ -462,26 +462,30 @@
         <input
           type="text"
           class="contact__input fs"
-          placeholder="Your Name"
+          placeholder="Your Name*"
           name="name"
+          required
         />
         <input
           type="email"
           class="contact__input"
           name="email"
-          placeholder="Your Email"
+          placeholder="Your Email*"
+          required
         />
         <input
           type="text"
           class="contact__input"
-          placeholder="Subject"
+          placeholder="Subject*"
           name="subject"
+          required
         />
         <textarea
           name="message"
           id="message"
-          placeholder="Message (180 characters)"
+          placeholder="Message (180 characters)*"
           maxlength="180"
+          required
           class="contact__input"
         ></textarea>
         <button type="submit" class="contact__submit">Send</button>
