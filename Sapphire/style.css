@@ -194,6 +194,8 @@
 }
 .slider {
   position: relative;
+  max-width: 150rem;
+  margin: 0 auto;
 }
 
 .product {
@@ -315,6 +317,10 @@
 
 /* CATEGORIES */
 
+.section__3 {
+  padding-top: 12.8rem;
+}
+
 .category {
   max-width: 40rem;
   border-top-right-radius: 9px;
@@ -347,6 +353,10 @@
 }
 
 /* ABOUT US SECTION */
+
+.section__4 {
+  padding-bottom: 9.6rem;
+}
 
 /* .about-us { */
 /* grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr)); */
