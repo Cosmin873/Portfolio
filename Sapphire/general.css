@@ -70,7 +70,7 @@ a {
 .img {
   width: 100%;
   opacity: 0.8;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 }
 
 .section {
@@ -126,6 +126,17 @@ a {
 
 .list {
   list-style: none;
+}
+
+.grid {
+  display: grid;
+  /* column-gap: 9.6rem;
+  row-gap: 8.4rem; */
+  gap: 6.4rem;
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .autofit-grid {
