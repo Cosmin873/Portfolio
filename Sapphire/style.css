@@ -9,11 +9,10 @@
   margin: 0 auto;
   transition: all 1s;
 }
-.hero-img-main {
-  height: 100%;
-}
+.hero-img-main,
 .hero-img-side {
   height: 100%;
+  filter: brightness(0.8);
 }
 
 .hero-2 {
@@ -66,21 +65,12 @@
   width: 80%;
 }
 
-.hero__title {
-  font-size: 6rem;
-  color: #f7fefe;
-  z-index: 10;
-}
-.hero__heading {
-  color: #fff;
-  z-index: 10;
-  font-size: 8rem;
-  line-height: 0.9;
-}
 .hero__subheading {
   font-size: 2.4rem;
   color: #f7fefe;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+  line-height: 1.6;
+
   margin-top: 4rem;
 }
 
@@ -121,15 +111,20 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   align-items: center;
   justify-content: space-between;
-  gap: 8rem;
+  gap: 2.4rem;
 }
 
-.badge {
+/* .badge {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  /* gap: 1rem; */
+/* }  */
+
+.badge-box {
+  text-align: center;
+  margin-bottom: 1.6rem;
 }
 
 .icon {
@@ -153,11 +148,13 @@
 }
 
 .badge__title {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
+  letter-spacing: -0.35px;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: var(--color-secondary);
+  line-height: 1;
 }
 
 .badge__description {
@@ -194,7 +191,8 @@
 }
 .slider {
   position: relative;
-  max-width: 150rem;
+  /* max-width: 150rem; */
+  max-width: 130rem;
   margin: 0 auto;
 }
 
@@ -374,7 +372,8 @@
   justify-content: center;
   justify-items: center;
   gap: 9.6rem;
-  max-width: 160rem;
+  /* max-width: 160rem; */
+  max-width: 120rem;
   margin: 0 auto;
   padding: 0 3.2rem;
 }

@@ -47,6 +47,7 @@
     <link rel="icon" href="./img/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Cormorant+Garamond:wght@500;700&display=swap"
       rel="stylesheet"
@@ -54,6 +55,7 @@
 
     <link href="./general.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="queries.css" />
     <script
       defer
       type="module"
@@ -83,11 +85,13 @@
   <body>
     <header class="header">
       <nav class="nav__bar">
-        <img
-          src="./img/logoNB.webp"
-          class="logo header__logo"
-          alt="Sapphire Logo"
-        />
+        <a href="#" class="logo">
+          <img
+            src="./img/logoNB.webp"
+            class="logo header__logo"
+            alt="Sapphire Logo"
+          />
+        </a>
         <ul class="nav__menu">
           <li class="nav__item">
             <a
@@ -207,15 +211,15 @@
             fetchpriority="high"
           />
           <div class="hero__title-1 text-shadow">
-            <h3 class="hero__title hero__heading text-in">
+            <h1 class="heading-primary hero__title-color text-in">
               Adorn Yourself With Meaning
-            </h3>
+            </h1>
             <p class="hero__subheading text-in">
               Jewelry that celebrates identity, beauty, and the moments that
               define you.
             </p>
             <button class="btn cta shadow text-in">
-              Explore Our Finest Selections
+              Explore Our Selection
             </button>
           </div>
         </div>
@@ -226,7 +230,7 @@
             alt="Women Jewelries"
           />
           <div class="hero__title-2 text-shadow">
-            <h3 class="hero__title text-in">Women</h3>
+            <h2 class="heading-secondary hero__title-color text-in">Women</h2>
           </div>
         </div>
         <div class="hero-img-3">
@@ -236,7 +240,7 @@
             alt="Men Jewelries"
           />
           <div class="hero__title-3 text-shadow">
-            <h3 class="hero__title text-in">Men</h3>
+            <h2 class="heading-secondary hero__title-color text-in">Men</h2>
           </div>
         </div>
       </div>
@@ -246,9 +250,11 @@
       <div class="">
         <div class="badges">
           <div class="badge">
-            <ion-icon name="cube-outline" class="icon icon-box"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="cube-outline" class="icon icon-box"></ion-icon>
+            </div>
             <div class="badge__content">
-              <h4 class="badge__title">Insured Shipping</h4>
+              <h3 class="badge__title">Insured Shipping</h3>
               <p class="badge__description">
                 To protect your order, all purchases over $150 are shipped with
                 insurance from USPS or DHL
@@ -256,10 +262,12 @@
             </div>
           </div>
           <div class="badge">
-            <ion-icon name="card-outline" class="icon icon-card"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="card-outline" class="icon icon-card"></ion-icon>
+            </div>
             <div class="badge__content">
-              <!-- <h4 class="badge__title">Secure Payments</h4> -->
-              <h4 class="badge__title">Feel safe when you shop with us</h4>
+              <h4 class="badge__title">Secure Payments</h4>
+              <!-- <h4 class="badge__title">Feel safe when you shop with us</h4> -->
               <p class="badge__description">
                 <!-- Feel safe when you shop with us.  -->
                 Our payment transactions are secure. We offer credit card
@@ -268,9 +276,11 @@
             </div>
           </div>
           <div class="badge">
-            <ion-icon name="heart" class="icon icon-heart"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="heart" class="icon icon-heart"></ion-icon>
+            </div>
             <div class="badge__content">
-              <h4 class="badge__title n">Always By Your Side</h4>
+              <h4 class="badge__title">Always By Your Side</h4>
               <p class="badge__description">
                 <!-- You are the reason we created Sapphire.-->
                 We will always be here to answer any questions and support you
@@ -279,13 +289,15 @@
             </div>
           </div>
           <div class="badge">
-            <ion-icon
-              name="shield-checkmark-outline"
-              class="icon icon-shield"
-            ></ion-icon>
+            <div class="badge-box">
+              <ion-icon
+                name="shield-checkmark-outline"
+                class="icon icon-shield"
+              ></ion-icon>
+            </div>
             <div class="badge__content">
-              <!-- <h4 class="badge__title">Warranty</h4> -->
-              <h4 class="badge__title">We want you to buy in confidence</h4>
+              <h4 class="badge__title">Warranty</h4>
+              <!-- <h4 class="badge__title">We want you to buy in confidence</h4> -->
               <p class="badge__description">
                 <!-- We want you to buy in confidence. -->
                 All of our jewelry is covered by our one-year warranty with the

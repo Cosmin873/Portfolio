@@ -1,0 +1,35 @@
+/************************/
+/* BELOW 1344px (Smaller desktops) */
+/************************/
+
+@media (max-width: 84em) {
+  .hero {
+    width: 100%;
+    justify-items: center;
+    column-gap: 0;
+    padding-left: 4rem;
+  }
+  .nav__bar {
+    padding: 0;
+    height: 8rem;
+    padding: 2rem;
+  }
+
+  .slider {
+    max-width: 110rem;
+  }
+}
+
+/************************/
+/* BELOW 1344px (Smaller desktops) */
+/************************/
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .cta {
+    font-size: 1.8rem;
+  }
+}
