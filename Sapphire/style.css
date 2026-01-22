@@ -348,22 +348,34 @@
 
 /* ABOUT US SECTION */
 
-.about-us {
-  /* grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr)); */
-  grid-template-columns: 1fr 1fr;
+/* .about-us { */
+/* grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr)); */
+/* grid-template-columns: 1fr 1fr;
   justify-items: center;
   justify-content: center;
   align-items: center;
   gap: 12rem;
   max-width: 160rem;
+  margin: 0 auto; */
+/* }  */
+
+.about-us {
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 9.6rem;
+  max-width: 160rem;
   margin: 0 auto;
+  padding: 0 3.2rem;
 }
 
 .about-us--title {
   font-size: 6.4rem;
   text-align: center;
   justify-content: center;
-  margin-bottom: 3rem;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin-bottom: 4.8rem;
   color: #64b4c5;
   text-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
 }
@@ -371,23 +383,24 @@
 .about-us--description {
   font-size: 2rem;
   letter-spacing: 1px;
+  line-height: 1.6;
   color: #0a0a0a;
 }
 
 .about-us > * {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .about-us--text {
-  flex-direction: column;
-  max-width: 100%;
+  /* flex-direction: column; */
+  /* max-width: 100%; */
 }
 
 .about-us--img {
-  width: 70rem;
+  /* width: 70rem; */
 }
 
 /* NEWSLETTER*/
@@ -400,7 +413,7 @@ Tablet: 768px
 Laptop: 992px
 Large desktops: 1200px
 */
-
+/* 
 @media (min-width: 0) {
   .hero__heading {
     font-size: 2.4rem;
@@ -531,6 +544,7 @@ Large desktops: 1200px
 }
 
 /* SEARCH BAR MOBILE RESPONSIVENESS */
+/*
 @media (max-width: 768px) {
   .search__result-list {
     transform: scale(0.8);
@@ -744,4 +758,4 @@ Large desktops: 1200px
   .slider {
     transform: scale(0.8);
   }
-}
+} */
