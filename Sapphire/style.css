@@ -107,8 +107,6 @@
   padding: 4rem 4rem 4rem 4rem;
 }
 .badges {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   align-items: center;
   justify-content: space-between;
   gap: 2.4rem;
@@ -192,7 +190,7 @@
 .slider {
   position: relative;
   /* max-width: 150rem; */
-  max-width: 130rem;
+  max-width: 150rem;
   margin: 0 auto;
 }
 
@@ -406,6 +404,7 @@
 .about-us--text {
   /* flex-direction: column; */
   /* max-width: 100%; */
+  /* padding: 2.4rem; */
 }
 
 .about-us--img {

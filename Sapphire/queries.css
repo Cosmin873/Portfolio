@@ -21,7 +21,7 @@
 }
 
 /************************/
-/* BELOW 1344px (Smaller desktops) */
+/* BELOW 1200px (Landscape tablets) */
 /************************/
 
 @media (max-width: 75em) {
@@ -31,5 +31,186 @@
 
   .cta {
     font-size: 1.8rem;
+  }
+
+  .section__3 .grid {
+    gap: 4rem;
+  }
+}
+
+/************************/
+/* BELOW 976px (Tablets) */
+/************************/
+
+@media (max-width: 61em) {
+  /* /* .grid--4-cols,
+  .grid--3-cols {
+    
+  } 
+  
+  
+  .category:last-child {
+    grid-column: span 2;
+  }
+  */
+  html {
+    font-size: 50%;
+  }
+  .grid--4-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .heading-primary {
+    font-size: 6.4rem;
+  }
+
+  .heading-secondary {
+    font-size: 4.4rem;
+  }
+
+  .badges {
+    margin-bottom: 3.2rem;
+    column-gap: 9.6rem;
+    row-gap: 6.4rem;
+  }
+}
+
+/************************/
+/* BELOW 864px (Tablets) */
+/************************/
+
+@media (max-width: 54em) {
+  .hero {
+    /* grid-template-columns: repeat(6, 1fr); */
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .hero-img-1 {
+    grid-row: 1/2;
+    grid-column: 1/-1;
+  }
+  .hero-img-2,
+  .hero-img-3 {
+    grid-row: 2/3;
+  }
+
+  .cta {
+    margin-top: 9.6rem;
+  }
+
+  .about-us {
+    column-gap: 6.4rem;
+    row-gap: 9.6rem;
+  }
+}
+
+/************************/
+/* BELOW 752px (Medium tablets) */
+/************************/
+
+@media (max-width: 47em) {
+  .icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .badge__title {
+    font-size: 2.2rem;
+  }
+
+  .badge__description {
+    font-size: 1.4rem;
+  }
+
+  .badges {
+    column-gap: 4.4rem;
+    row-gap: 3.2rem;
+  }
+
+  .grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category:last-child {
+    grid-column: 1/-1;
+  }
+
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .about-us div:nth-child(3) {
+    grid-row: 4;
+  }
+
+  /* MOBILE NAVIGATION */
+  /* 
+  -Remove the current icon and add ionicon
+  -Add 2 ionicons for opening and for closing
+  -Check javascript to see what's implying
+  */
+}
+
+/************************/
+/* BELOW 640px (Smaller tables) */
+/************************/
+
+@media (max-width: 40em) {
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .hero__subheading {
+    font-size: 1.8rem;
+  }
+
+  .cta {
+    margin-top: 4.4rem;
+  }
+  .footer__header {
+    justify-content: center;
+    padding: 6.4rem 0;
+
+    flex-direction: column;
+  }
+
+  .category:last-child {
+    width: 50%;
+  }
+}
+
+/************************/
+/* BELOW 544px (Mobile) */
+/************************/
+
+@media (max-width: 34em) {
+  .section__header-title,
+  .section__header-description {
+    text-align: center;
+  }
+
+  .section__4 .grid {
+    gap: 6.4rem;
+  }
+
+  .about-us--title {
+    font-size: 3.2rem;
+    margin-bottom: 2.4rem;
+    text-shadow: none;
+  }
+
+  .about-us--description {
+    font-size: 1.8rem;
+  }
+
+  .about-us--img {
+    width: 100%;
+    transform: translateY(-3rem);
+  }
+
+  .aligning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
