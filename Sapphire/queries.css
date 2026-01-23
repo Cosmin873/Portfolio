@@ -7,8 +7,13 @@
     width: 100%;
     justify-items: center;
     column-gap: 0;
-    padding-left: 4rem;
+    /* padding: 4rem; */
   }
+
+  .hero-img-1 {
+    border-radius: 0;
+  }
+
   .nav__bar {
     padding: 0;
     height: 8rem;
@@ -98,6 +103,10 @@
     margin-top: 9.6rem;
   }
 
+  .heading-secondary {
+    font-size: 6.4rem;
+  }
+
   .about-us {
     column-gap: 6.4rem;
     row-gap: 9.6rem;
@@ -149,6 +158,15 @@
   -Add 2 ionicons for opening and for closing
   -Check javascript to see what's implying
   */
+
+  .nav__menu {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .logo {
+    order: 0;
+  }
 }
 
 /************************/
