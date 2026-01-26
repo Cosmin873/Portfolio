@@ -324,6 +324,14 @@ a {
   gap: 3rem;
 }
 
+.mobile-nav {
+  display: none;
+}
+
+.close__mobile-nav {
+  display: none;
+}
+
 .nav__item {
   list-style: none;
 }
