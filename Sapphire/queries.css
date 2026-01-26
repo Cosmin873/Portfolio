@@ -164,9 +164,6 @@
     pointer-events: none;
     visibility: hidden;
   }
-  .logo {
-    order: 0;
-  }
 }
 
 /************************/

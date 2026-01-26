@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 import { data } from "./db.js";
 import {
   capitalize,
@@ -7,6 +7,7 @@ import {
   cardImgSliderReset,
   renderSlider,
 } from "./general-functions.js";
+
 console.log("Test branch netlify");
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
@@ -39,7 +40,7 @@ let searchResult = [];
 const resetSearchResults = function () {
   if (searchResultList)
     [searchResultBar].forEach((el) =>
-      el.querySelectorAll(".slider__btn").forEach((t) => t.remove())
+      el.querySelectorAll(".slider__btn").forEach((t) => t.remove()),
     );
   if (searchResultItem)
     searchResultItem.forEach((el) => {
@@ -168,7 +169,7 @@ searchInput.addEventListener("keydown", function (e) {
     searchResult,
     searchResultList,
     "beforeend",
-    "search__product"
+    "search__product",
   );
   searchResultItem = document.querySelectorAll(".search__product");
   searchResultList = document.querySelector(".search__result-list");
@@ -183,13 +184,13 @@ searchInput.addEventListener("keydown", function (e) {
       120,
       0,
       4,
-      false
+      false,
     );
   }
 
   if (searchResultList)
     [searchResultBar].forEach((el) =>
-      el.querySelectorAll(".dots").forEach((t) => t.remove())
+      el.querySelectorAll(".dots").forEach((t) => t.remove()),
     );
   if (search.length > 0) searchResultBar.classList.remove("search__fade-in");
   if (search.length < 1 || !searchResultList)
@@ -215,9 +216,8 @@ const submitContactFormFunc = function (e) {
     }
   });
   if ([...elemente].every((el) => el.value !== "")) {
-    document.querySelector(
-      ".contact__form"
-    ).innerHTML = `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
+    document.querySelector(".contact__form").innerHTML =
+      `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
     document.querySelector(".modal__error").classList.add("hidden");
     setTimeout(function () {
       modal.classList.add("fade-in");
@@ -240,7 +240,7 @@ const submitContactFormFunc = function (e) {
 submitContactForm.addEventListener("submit", submitContactFormFunc);
 
 cta.addEventListener("click", () =>
-  document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
+  document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" }),
 );
 
 // Bestsellers Section
