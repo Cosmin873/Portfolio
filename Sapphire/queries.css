@@ -166,6 +166,7 @@
 
   .nav__menu {
     height: 0;
+    z-index: -999;
     pointer-events: none;
     visibility: hidden;
     position: fixed;
