@@ -68,19 +68,22 @@ const navBarFunc = function (e) {
     const id = e.target.getAttribute("href").slice(1);
     const toTarget = document.querySelector(`.${id}`);
 
-    if (
-      window.innerWidth <= 576 &&
-      navBar.classList.contains("nav__fixed") &&
-      !navBar.classList.contains("nav__hide")
-    ) {
-      navBar.classList.toggle("nav__hide");
-      navBar.classList.toggle("nav__fixed");
-    }
+    // if (
+    //   window.innerWidth <= 576 &&
+    //   navBar.classList.contains("nav__fixed") &&
+    //   !navBar.classList.contains("nav__hide")
+    // ) {
+    //   navBar.classList.toggle("nav__hide");
+    //   navBar.classList.toggle("nav__fixed");
+    // }
+
+    header.classList.toggle("nav-open");
 
     toTarget.scrollIntoView({ behavior: "smooth" });
   }
 
   if (e.target.classList.contains("contact")) {
+    header.classList.toggle("nav-open");
     // document.querySelector(".contact__form").innerHTML = "";
     //     const contactForm = document.querySelector(".contact__form");
     // const contactSubmit = document.querySelector(".contact__submit");
@@ -341,6 +344,15 @@ category.forEach((el) => {
 // **INTERSECTION OBSERVER API** //
 // **STICKY NAV** //
 
+const header = document.querySelector("header");
+const mobileNavBtn = document.querySelector(".mobile-nav");
+// window.addEventListener("scroll", function () {
+//   const navHeight = navBar.getBoundingClientRect().height;
+//   const y = this.window.pageYOffset;
+//   if (y > navHeight) navBar.classList.add("nav__fixed");
+//   else navBar.classList.remove("nav__fixed");
+// });
+
 // Callback Functions
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
@@ -348,15 +360,16 @@ const obsNavCB = function (entries, observer) {
     if (entry.isIntersecting) {
       navBar.classList.remove("nav__fixed");
       navBar.classList.remove("nav__hide");
-      navTriggerBtn.classList.add("hidden");
+      // navTriggerBtn.classList.add("hidden");
     }
     if (!entry.isIntersecting && entry.rootBounds.width < 576) {
       navBar.classList.add("nav__hide");
     }
     if (!entry.isIntersecting && entry.rootBounds.width >= 576)
       navBar.classList.add("nav__fixed");
-    if (!entry.isIntersecting && entry.rootBounds.width <= 921)
-      navTriggerBtn.classList.remove("hidden");
+    if (!entry.isIntersecting && entry.rootBounds.width <= 921) {
+      // navTriggerBtn.classList.remove("hidden");
+    }
   });
 };
 
@@ -386,9 +399,13 @@ document
   .querySelector(".header__logo")
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
 
-navTriggerBtn.addEventListener("click", function (e) {
-  navBar.classList.toggle("nav__hide");
-  navBar.classList.toggle("nav__fixed");
+// navTriggerBtn.addEventListener("click", function (e) {
+//   navBar.classList.toggle("nav__hide");
+//   navBar.classList.toggle("nav__fixed");
+// });
+
+mobileNavBtn.addEventListener("click", function () {
+  header.classList.toggle("nav-open");
 });
 
 // **Bestseller slider** //
