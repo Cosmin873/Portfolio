@@ -120,8 +120,8 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
                     
                   </div>
                   <div class="review__ratings">(${elRating} / 5, ${
-      el.reviews.length
-    } reviews)</div>
+                    el.reviews.length
+                  } reviews)</div>
                 </div>
           <h5 class="product__material-title">Colors:</h5>
           <ul class="product__material">${el.material
@@ -180,7 +180,7 @@ const renderSlider = function (
   translate = 120,
   min = 0,
   max = 1,
-  animation = true
+  animation = true,
 ) {
   // let currentSlide = currentSl;
   const slidesAnimation = function () {
@@ -236,7 +236,7 @@ const renderSlider = function (
   source.forEach((el, i) => {
     dotsContainer.insertAdjacentHTML(
       "beforeend",
-      `<button class="dot" data-id = "${i}"></button>`
+      `<button class="dot" data-id = "${i}"></button>`,
     );
   });
 
@@ -335,7 +335,7 @@ const renderHighlight = function (source, target, insertOrder) {
                     alt="${source.tag}"
                     src="${source.url.at(0)}"
                   />
-                </div>`
+                </div>`,
   );
 };
 
@@ -355,8 +355,8 @@ const renderThumbnails = function (source, target, insertOrder) {
                       alt="${source.tag}"
                       src="${img}"
                     />
-                  </div>`
-    )
+                  </div>`,
+    ),
   );
 };
 

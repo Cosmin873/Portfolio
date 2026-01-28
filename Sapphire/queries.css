@@ -159,14 +159,20 @@
   -Check javascript to see what's implying
   */
 
+  .nav__bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   .nav__menu {
-    opacity: 0;
+    height: 0;
     pointer-events: none;
     visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: all 1s;
   }
 
   .mobile-nav {
@@ -192,6 +198,27 @@
     z-index: 99999;
   }
 
+  .nav-open .account__list {
+    align-self: start;
+    justify-content: end;
+    flex-wrap: wrap;
+  }
+
+  .nav-open .wishlist-icon {
+    justify-self: end;
+    align-self: end;
+  }
+
+  .nav-open .logo-container {
+    align-self: start;
+    justify-self: center;
+    width: 20rem;
+  }
+
+  .nav-open .header__logo {
+    width: 100%;
+  }
+
   .nav-open .nav__menu {
     opacity: 1;
     pointer-events: all;
@@ -202,19 +229,6 @@
   .nav-open .nav__link:link,
   .nav-open .nav__link:visited {
     font-size: 3.8rem;
-  }
-
-  .nav-open .account__list {
-    align-self: start;
-  }
-
-  .nav-open .logo-container {
-    align-self: start;
-    justify-self: center;
-    /* position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%); */
   }
 }
 
@@ -259,6 +273,13 @@
   .section__4 .grid {
     gap: 6.4rem;
   }
+
+  /* .nav-open .logo-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
 
   .about-us--title {
     font-size: 3.2rem;
