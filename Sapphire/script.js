@@ -356,6 +356,26 @@ const mobileNavBtn = document.querySelector(".mobile-nav");
 // });
 
 // Callback Functions
+// FIRST VERSION USING ONLY HAMBURGER MENU BUTTON FOR FIXED NAVBAR
+
+// const obsNavCB = function (entries, observer) {
+//   entries.forEach((entry) => {
+//     console.log(entry, navBar);
+//     if (entry.isIntersecting) {
+//       navBar.classList.remove("nav__fixed");
+//       navBar.classList.remove("nav__hide");
+//       // navTriggerBtn.classList.add("hidden");
+//     }
+//     if (!entry.isIntersecting && entry.rootBounds.width < 576) {
+//       navBar.classList.add("nav__hide");
+//     }
+//     if (!entry.isIntersecting && entry.rootBounds.width >= 576)
+//       navBar.classList.add("nav__fixed");
+//     if (!entry.isIntersecting && entry.rootBounds.width <= 921) {
+//       // navTriggerBtn.classList.remove("hidden");
+//     }
+//   });
+// };
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
     console.log(entry, navBar);
@@ -364,13 +384,8 @@ const obsNavCB = function (entries, observer) {
       navBar.classList.remove("nav__hide");
       // navTriggerBtn.classList.add("hidden");
     }
-    if (!entry.isIntersecting && entry.rootBounds.width < 576) {
-      navBar.classList.add("nav__hide");
-    }
-    if (!entry.isIntersecting && entry.rootBounds.width >= 576)
+    if (!entry.isIntersecting) {
       navBar.classList.add("nav__fixed");
-    if (!entry.isIntersecting && entry.rootBounds.width <= 921) {
-      // navTriggerBtn.classList.remove("hidden");
     }
   });
 };
