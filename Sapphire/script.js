@@ -304,11 +304,13 @@ const getCategories = function () {
 const renderCategories = function (source, target, insertOrder) {
   source.forEach((el) => {
     const html = `  <div class="category">
+    <figure>
           <img
             src="${el[1].img}"
             class="category__img img"
             alt="Ring category"
           />
+          </figure>
           <div class="category__information">
             <h3 class="category__title">${capitalize(el[0])}</h3>
           </div>

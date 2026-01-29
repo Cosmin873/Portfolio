@@ -85,6 +85,18 @@
 /************************/
 
 @media (max-width: 54em) {
+
+   .grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+   .category:last-child {
+    grid-column: 1/-1;
+  }
+
+
+  
+
   .hero {
     /* grid-template-columns: repeat(6, 1fr); */
     grid-template-columns: 1fr 1fr;
@@ -136,12 +148,22 @@
     row-gap: 3.2rem;
   }
 
-  .grid--3-cols {
-    grid-template-columns: repeat(2, 1fr);
+     .grid--3-cols {
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .category:last-child {
-    grid-column: 1/-1;
+ 
+
+  .section__3 .container {
+    max-width: 100%;
+  }
+
+  .section__3 .grid {
+    gap: 10rem;
+  }
+
+  .category {
+    max-width: 50rem;
   }
 
   .grid--2-cols {
@@ -223,7 +245,7 @@
     align-self: start;
     justify-content: end;
     justify-self: end;
-    flex-wrap: wrap;
+   
   }
 
   .nav-open .wishlist-icon {
@@ -244,7 +266,12 @@
   .nav-open .nav__link:link,
   .nav-open .nav__link:visited {
     font-size: 3.8rem;
+    
   }
+
+ 
+
+ 
 }
 
 /************************/
@@ -270,9 +297,7 @@
     flex-direction: column;
   }
 
-  .category:last-child {
-    width: 50%;
-  }
+  
 }
 
 /************************/
@@ -316,4 +341,52 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+
+/************************/
+/* BELOW 480x (Mobile) */
+/************************/
+
+@media(max-width: 30em) {
+
+  .heading-primary{
+    font-size: 4.4rem;
+  }
+
+  .hero__subheading {
+    display: none;
+  }
+
+  .heading-secondary{
+    font-size: 4.4rem;
+  }
+
+  .cta {
+    font-size: 1.6rem;
+  }
+
+  .account__list {
+    flex-wrap: wrap;
+   row-gap: 0;
+   column-gap: 1.6rem;
+  }
+
+  .footer__links {
+    width: 100%;
+    padding: 0 4rem;
+    display: grid;
+    justify-items: end;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6rem;
+  }
+
+  .newsletter__box {
+    text-align: center;
+  }
+
+  .newsletter__input {
+    margin-bottom: 1.6rem;
+  }
+  
 }
