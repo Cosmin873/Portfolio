@@ -191,6 +191,7 @@
   .nav__menu {
     flex-direction: column;
     gap: 0;
+
     margin-top:not(:last-child): -5rem;
     
     opacity: 0;
@@ -215,7 +216,12 @@
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
   }
+
+  /* .nav-open .nav__item {
+     width: 8rem;
+  } */
 
   .mobile-nav {
     display: block;
@@ -388,5 +394,6 @@
   .newsletter__input {
     margin-bottom: 1.6rem;
   }
+  
   
 }

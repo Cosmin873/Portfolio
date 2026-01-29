@@ -348,6 +348,7 @@ a {
 
 .nav__item {
   list-style: none;
+ 
 }
 
 .nav__link:link,
@@ -360,6 +361,7 @@ a {
   padding: 1.2rem 2.8rem;
   border-radius: 9px;
   transition: all 0.3s;
+ 
 }
 
 .nav__link:hover,
