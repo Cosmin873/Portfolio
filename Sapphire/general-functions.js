@@ -22,6 +22,7 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
     let starId;
 
     const html = `<div class="product ${optClass}" data-id = "${id++}"> 
+  <div class="slide-inner">
    <a href="./product-page.html#${el.code}">
      <figure class="product__img-container">
 <img
@@ -130,6 +131,7 @@ const renderProducts = function (source, target, insertOrder, optClass = "") {
           <p class="product__price">${el.price} EUR</p>
           </div>
   </a>
+  </div>
         </div>`;
 
     target.insertAdjacentHTML(insertOrder, html);
@@ -193,8 +195,8 @@ const renderSlider = function (
         });
       //
       source[currentSlide].classList.remove("shadow-1");
-      source[currentSlide].classList.add("shadow");
-      source[currentSlide].style.transform = "scale(1.1)";
+      source[currentSlide].classList.add("shadow", "active");
+      // source[currentSlide].style.transform = "scale(1.1)";
     }
   };
 
@@ -259,8 +261,9 @@ const renderSlider = function (
   });
   const sliding = function (slide) {
     source.forEach((el, i, arr) => {
-      el.style.transform = `translateX(${translate * (i - slide)}%) scale(0.9)`;
+      el.style.transform = `translateX(${translate * (i - slide)}%)`;
       el.classList.add("shadow-1");
+      el.classList.remove("active");
     });
     if (window.innerWidth >= 880) slidesAnimation();
     activateDot();
