@@ -194,8 +194,9 @@ const renderSlider = function (
           item.classList.remove("shadow");
         });
       //
-      source[currentSlide].classList.remove("shadow-1");
-      source[currentSlide].classList.add("shadow", "active");
+      // source[currentSlide].classList.remove("shadow-1");
+      source[currentSlide].classList.add("active");
+      // source[currentSlide].classList.add("shadow", "active");
       // source[currentSlide].style.transform = "scale(1.1)";
     }
   };
@@ -262,7 +263,7 @@ const renderSlider = function (
   const sliding = function (slide) {
     source.forEach((el, i, arr) => {
       el.style.transform = `translateX(${translate * (i - slide)}%)`;
-      el.classList.add("shadow-1");
+      // el.classList.add("shadow-1");
       el.classList.remove("active");
     });
     if (window.innerWidth >= 880) slidesAnimation();

@@ -399,13 +399,17 @@
 /* SLIDER */
 /************************/
 
-@media (max-width: 95em) {
-  .products {
+@media (max-width: 96em) {
+  /* .products {
     transform: scale(0.9);
+  } */
+
+  .product.active .slide-inner {
+    transform: scale(0.95);
   }
 
-  .product {
-    width: 39rem;
+  .slide-inner {
+    transform: scale(0.8);
   }
 
   .slider__btn-left {
@@ -413,6 +417,9 @@
   }
   .slider__btn-right {
     right: 6%;
+  }
+  .dots {
+    bottom: 9%;
   }
 }
 
@@ -440,4 +447,7 @@
   .slider__btn-right {
     right: 8%;
   }
+}
+
+@media (max-width: 72em) {
 }

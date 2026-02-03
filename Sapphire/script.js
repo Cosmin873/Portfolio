@@ -432,7 +432,16 @@ const slides = document.querySelectorAll(".product");
 
 const sliderContainer = document.querySelector(".slider");
 
-renderSlider(slides, sliderContainer, 1, containerL);
+const determineWidthSlider = function () {
+  if (window.innerWidth >= 1155) {
+    return 120;
+  }
+  if (window.innerWidth <= 1155) {
+    return 100;
+  }
+};
+console.log(window.innerWidth);
+renderSlider(slides, sliderContainer, 1, containerL, determineWidthSlider());
 
 // (function () {
 //   if (window.innerWidth <= 365) {
