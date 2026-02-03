@@ -231,8 +231,10 @@ const renderSlider = function (
       sliderLeftBtn.classList.add("slider__btn-bottom");
       sliderRightBtn.classList.remove("slider__btn-top");
       sliderRightBtn.classList.add("slider__btn-bottom");
-      sliderLeftBtn.style.transform = "translate(0, 30%)";
-      sliderRightBtn.style.transform = "translate(0, 30%)";
+      // sliderLeftBtn.style.transform = "translate(0, 30%)";
+      // sliderRightBtn.style.transform = "translate(0, 30%)";
+      sliderLeftBtn.style.transform = "translate(0, -20%)";
+      sliderRightBtn.style.transform = "translate(0, -20%)";
     }
   })();
 

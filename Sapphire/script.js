@@ -432,16 +432,26 @@ const slides = document.querySelectorAll(".product");
 
 const sliderContainer = document.querySelector(".slider");
 
-const determineWidthSlider = function () {
-  if (window.innerWidth >= 1155) {
-    return 120;
-  }
-  if (window.innerWidth <= 1155) {
-    return 100;
-  }
+const determineTranslateSlider = function () {
+  // former determineWidthSlider
+  if (window.innerWidth <= 859) return 90;
+  if (window.innerWidth <= 1155) return 100;
+  if (window.innerWidth >= 1537) return 120;
+  if (window.innerWidth >= 1155) return 102;
 };
-console.log(window.innerWidth);
-renderSlider(slides, sliderContainer, 1, containerL, determineWidthSlider());
+
+const determineFirstSlide = function () {
+  if (window.innerWidth <= 784) return 0;
+  if (window.innerWidth >= 784) return 1;
+};
+
+renderSlider(
+  slides,
+  sliderContainer,
+  determineFirstSlide(),
+  containerL,
+  determineTranslateSlider(),
+);
 
 // (function () {
 //   if (window.innerWidth <= 365) {

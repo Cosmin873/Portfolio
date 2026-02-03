@@ -282,6 +282,7 @@ a {
   opacity: 0;
   height: 0;
   width: 0;
+  pointer-events: none;
 }
 
 .nav__hide {
@@ -836,6 +837,11 @@ input[type="search"]::-webkit-search-results-decoration {
 .close__modal {
   font-size: 3rem;
   text-align: right;
+  background: none;
+  border: none;
+}
+
+.close-icon {
   cursor: pointer;
 }
 

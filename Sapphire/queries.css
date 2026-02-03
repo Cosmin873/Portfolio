@@ -3,6 +3,9 @@
 /************************/
 
 @media (max-width: 101em) {
+  .section__2 .section__header {
+    margin-bottom: 0;
+  }
   .slider {
     max-width: 150rem;
   }
@@ -15,6 +18,10 @@
   }
   .slider__btn-right {
     right: 4%;
+  }
+
+  .section__3 {
+    padding-top: 0;
   }
 }
 
@@ -381,9 +388,17 @@
     width: 100%;
     padding: 0 4rem;
     display: grid;
-    justify-items: end;
+
     grid-template-columns: 1fr 1fr;
     row-gap: 6rem;
+  }
+
+  .footer__list {
+    padding: 0 0 0 8rem;
+  }
+
+  .footer__list:nth-child(2) {
+    padding: 0 10rem 0 0;
   }
 
   .newsletter__box {
@@ -392,6 +407,10 @@
 
   .newsletter__input {
     margin-bottom: 1.6rem;
+  }
+
+  .modal {
+    width: 80%;
   }
 }
 
@@ -449,5 +468,19 @@
   }
 }
 
-@media (max-width: 72em) {
+@media (max-width: 49em) {
+  .products {
+    width: 100%;
+    transform: scale(0.9);
+  }
+
+  .slider__btn {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 37em) {
+  /* .slider__btn {
+    transform: translateY(0);
+  } */
 }
