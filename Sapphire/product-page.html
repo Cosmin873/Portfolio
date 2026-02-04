@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
@@ -50,7 +50,7 @@
       rel="stylesheet"
     />
     <link href="./general.css" rel="stylesheet" />
-
+    <link href="./queries.css" rel="stylesheet" />
     <link href="./product-page.css" rel="stylesheet" />
     <script
       type="module"
@@ -62,16 +62,24 @@
   <body>
     <header class="header">
       <nav class="nav__bar">
-        <img
-          src="./img/logoNB.webp"
-          class="logo header__logo"
-          alt="Sapphire Logo"
-          href="#"
-        />
+        <button class="mobile-nav">
+          <ion-icon name="menu-sharp" class="icon open__mobile-nav"></ion-icon>
+          <ion-icon
+            name="close-sharp"
+            class="icon close__mobile-nav"
+          ></ion-icon>
+        </button>
+        <a href="#" class="logo-container">
+          <img
+            src="./img/logoNB.webp"
+            class="logo header__logo"
+            alt="Sapphire Logo"
+          />
+        </a>
         <ul class="nav__menu">
           <li class="nav__item">
             <a
-              href="index.html#section__2"
+              href="#section__2"
               class="nav__link link__scroll"
               aria-label="Go to Bestsellers section"
               >Bestsellers</a
@@ -79,7 +87,7 @@
           </li>
           <li class="nav__item">
             <a
-              href="index.html#section__3"
+              href="#section__3"
               class="nav__link link__scroll"
               aria-label="Go to Catalog section"
               >Catalog</a
@@ -87,7 +95,7 @@
           </li>
           <li class="nav__item">
             <a
-              href="index.html#section__4"
+              href="#section__4"
               class="nav__link link__scroll"
               aria-label="Go to About-us section"
               >About us</a
