@@ -177,7 +177,7 @@ searchInput.addEventListener("keydown", function (e) {
   searchResultItem = document.querySelectorAll(".search__product");
   searchResultList = document.querySelector(".search__result-list");
 
-  if (searchResultItem.length >= 5 && window.innerHeight >= 1000) {
+  if (searchResultItem.length >= 5) {
     searchResultItem.forEach((item) => item.classList.add("search__product-S"));
     renderSlider(
       searchResultItem,
@@ -186,24 +186,24 @@ searchInput.addEventListener("keydown", function (e) {
       searchResultBar,
       100,
       0,
-      4,
+      1,
       false,
     );
   }
 
-  if (searchResultItem.length >= 3 && window.innerHeight <= 1000) {
-    searchResultItem.forEach((item) => item.classList.add("search__product-S"));
-    renderSlider(
-      searchResultItem,
-      searchResultContent,
-      -1,
-      searchResultBar,
-      120,
-      -1,
-      2,
-      false,
-    );
-  }
+  // if (searchResultItem.length >= 3 && window.innerHeight <= 1000) {
+  //   searchResultItem.forEach((item) => item.classList.add("search__product-S"));
+  //   renderSlider(
+  //     searchResultItem,
+  //     searchResultContent,
+  //     -1,
+  //     searchResultBar,
+  //     120,
+  //     -1,
+  //     2,
+  //     false,
+  //   );
+  // }
 
   if (searchResultList)
     [searchResultBar].forEach((el) =>

@@ -482,7 +482,7 @@ input[type="search"]::-webkit-search-results-decoration {
   gap: 4rem;
 
   /* transform: scale(0.8); */
-  /* overflow: hidden; */
+  overflow: hidden;
 
   background-color: #fff;
   box-shadow: none;
@@ -512,7 +512,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-direction: column; */
+  flex-direction: column;
 }
 
 /* BESTSELLER SLIDER */
