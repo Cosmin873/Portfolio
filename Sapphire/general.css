@@ -501,6 +501,7 @@ input[type="search"]::-webkit-search-results-decoration {
   flex-shrink: 0;
   box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.05);
   transform: scale(1) translateY(-10rem);
+  z-index: 99999999999999999999999999;
 }
 
 .search__product-S {
