@@ -353,7 +353,9 @@ a {
   background-color: var(--color-primary);
   padding: 1.2rem 2.8rem;
   border-radius: 9px;
-  transition: all 0.3s;
+  transition:
+    background-color 0.3s linear,
+    color 0.3s linear;
 }
 
 .nav__link:hover,

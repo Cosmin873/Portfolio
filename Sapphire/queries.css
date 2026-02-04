@@ -58,8 +58,8 @@
   }
 
   .search__product {
-    margin-left: -6rem;
-    transform: translate(5rem, -10rem);
+    margin-left: -40rem;
+    /* transform: translate(5rem, -10rem); */
   }
 
   .cta {
@@ -212,6 +212,12 @@
   -Add 2 ionicons for opening and for closing
   -Check javascript to see what's implying
   */
+
+  .nav__link:link {
+    display: inline-block;
+    width: 25rem;
+    text-align: center;
+  }
 
   .nav__bar {
     display: grid;
