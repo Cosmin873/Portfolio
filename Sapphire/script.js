@@ -198,7 +198,7 @@ searchInput.addEventListener("keydown", function (e) {
       searchResultContent,
       -1,
       searchResultBar,
-      90,
+      120,
       -1,
       2,
       false,
