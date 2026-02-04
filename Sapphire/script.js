@@ -155,7 +155,6 @@ const searchingDB = function (input) {
   }
 };
 searchInput.addEventListener("keydown", function (e) {
-  e.preventDefault();
   // if (searchResultList)
   //   [searchResultList].forEach((el) =>
   //     el.querySelectorAll(".product").forEach((t) => t.remove())

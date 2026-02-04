@@ -482,7 +482,7 @@ input[type="search"]::-webkit-search-results-decoration {
   gap: 4rem;
 
   /* transform: scale(0.8); */
-  overflow: hidden;
+  /* overflow: hidden; */
 
   background-color: #fff;
   box-shadow: none;
@@ -500,7 +500,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .search__product {
   flex-shrink: 0;
   box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.05);
-  z-index: 999999999999999999999999999999;
+
   /* transform: scale(1) translateY(-10rem); */
 }
 
@@ -513,7 +513,6 @@ input[type="search"]::-webkit-search-results-decoration {
   align-items: center;
   justify-content: center;
   /* flex-direction: column; */
-  z-index: 999999999999999999999999999999;
 }
 
 /* BESTSELLER SLIDER */
