@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 import { data } from "./db.js";
 import {
   capitalize,
@@ -8,6 +8,7 @@ import {
   renderSlider,
 } from "./general-functions.js";
 
+console.log("Test branch netlify");
 const productsDOM = document.querySelector(".products");
 const categoriesDOM = document.querySelector(".categories");
 const navContainer = document.querySelector(".nav__menu");
@@ -36,10 +37,11 @@ const navTriggerBtn = document.querySelector(".nav__handler");
 
 let search = [];
 let searchResult = [];
+
 const resetSearchResults = function () {
   if (searchResultList)
     [searchResultBar].forEach((el) =>
-      el.querySelectorAll(".slider__btn").forEach((t) => t.remove())
+      el.querySelectorAll(".slider__btn").forEach((t) => t.remove()),
     );
   if (searchResultItem)
     searchResultItem.forEach((el) => {
@@ -67,19 +69,22 @@ const navBarFunc = function (e) {
     const id = e.target.getAttribute("href").slice(1);
     const toTarget = document.querySelector(`.${id}`);
 
-    if (
-      window.innerWidth <= 576 &&
-      navBar.classList.contains("nav__fixed") &&
-      !navBar.classList.contains("nav__hide")
-    ) {
-      navBar.classList.toggle("nav__hide");
-      navBar.classList.toggle("nav__fixed");
-    }
+    // if (
+    //   window.innerWidth <= 576 &&
+    //   navBar.classList.contains("nav__fixed") &&
+    //   !navBar.classList.contains("nav__hide")
+    // ) {
+    //   navBar.classList.toggle("nav__hide");
+    //   navBar.classList.toggle("nav__fixed");
+    // }
+
+    header.classList.toggle("nav-open");
 
     toTarget.scrollIntoView({ behavior: "smooth" });
   }
 
   if (e.target.classList.contains("contact")) {
+    header.classList.toggle("nav-open");
     // document.querySelector(".contact__form").innerHTML = "";
     //     const contactForm = document.querySelector(".contact__form");
     // const contactSubmit = document.querySelector(".contact__submit");
@@ -150,7 +155,7 @@ const searchingDB = function (input) {
     });
   }
 };
-searchInput.addEventListener("keydown", function (e) {
+searchInput.addEventListener("keyup", function (e) {
   // if (searchResultList)
   //   [searchResultList].forEach((el) =>
   //     el.querySelectorAll(".product").forEach((t) => t.remove())
@@ -168,7 +173,7 @@ searchInput.addEventListener("keydown", function (e) {
     searchResult,
     searchResultList,
     "beforeend",
-    "search__product"
+    "search__product",
   );
   searchResultItem = document.querySelectorAll(".search__product");
   searchResultList = document.querySelector(".search__result-list");
@@ -180,16 +185,30 @@ searchInput.addEventListener("keydown", function (e) {
       searchResultContent,
       0,
       searchResultBar,
-      120,
+      100,
       0,
-      4,
-      false
+      1,
+      false,
     );
   }
 
+  // if (searchResultItem.length >= 3 && window.innerHeight <= 1000) {
+  //   searchResultItem.forEach((item) => item.classList.add("search__product-S"));
+  //   renderSlider(
+  //     searchResultItem,
+  //     searchResultContent,
+  //     -1,
+  //     searchResultBar,
+  //     120,
+  //     -1,
+  //     2,
+  //     false,
+  //   );
+  // }
+
   if (searchResultList)
     [searchResultBar].forEach((el) =>
-      el.querySelectorAll(".dots").forEach((t) => t.remove())
+      el.querySelectorAll(".dots").forEach((t) => t.remove()),
     );
   if (search.length > 0) searchResultBar.classList.remove("search__fade-in");
   if (search.length < 1 || !searchResultList)
@@ -215,9 +234,8 @@ const submitContactFormFunc = function (e) {
     }
   });
   if ([...elemente].every((el) => el.value !== "")) {
-    document.querySelector(
-      ".contact__form"
-    ).innerHTML = `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
+    document.querySelector(".contact__form").innerHTML =
+      `<p class="form__ok">We received your enquire and we will answer in the shortest time possible. Have a great day!</p>`;
     document.querySelector(".modal__error").classList.add("hidden");
     setTimeout(function () {
       modal.classList.add("fade-in");
@@ -240,7 +258,7 @@ const submitContactFormFunc = function (e) {
 submitContactForm.addEventListener("submit", submitContactFormFunc);
 
 cta.addEventListener("click", () =>
-  document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" })
+  document.querySelector(".section__2").scrollIntoView({ behavior: "smooth" }),
 );
 
 // Bestsellers Section
@@ -301,11 +319,13 @@ const getCategories = function () {
 const renderCategories = function (source, target, insertOrder) {
   source.forEach((el) => {
     const html = `  <div class="category">
+    <figure>
           <img
             src="${el[1].img}"
             class="category__img img"
             alt="Ring category"
           />
+          </figure>
           <div class="category__information">
             <h3 class="category__title">${capitalize(el[0])}</h3>
           </div>
@@ -341,22 +361,47 @@ category.forEach((el) => {
 // **INTERSECTION OBSERVER API** //
 // **STICKY NAV** //
 
+const header = document.querySelector("header");
+const mobileNavBtn = document.querySelector(".mobile-nav");
+// window.addEventListener("scroll", function () {
+//   const navHeight = navBar.getBoundingClientRect().height;
+//   const y = this.window.pageYOffset;
+//   if (y > navHeight) navBar.classList.add("nav__fixed");
+//   else navBar.classList.remove("nav__fixed");
+// });
+
 // Callback Functions
+// FIRST VERSION USING ONLY HAMBURGER MENU BUTTON FOR FIXED NAVBAR
+
+// const obsNavCB = function (entries, observer) {
+//   entries.forEach((entry) => {
+//     console.log(entry, navBar);
+//     if (entry.isIntersecting) {
+//       navBar.classList.remove("nav__fixed");
+//       navBar.classList.remove("nav__hide");
+//       // navTriggerBtn.classList.add("hidden");
+//     }
+//     if (!entry.isIntersecting && entry.rootBounds.width < 576) {
+//       navBar.classList.add("nav__hide");
+//     }
+//     if (!entry.isIntersecting && entry.rootBounds.width >= 576)
+//       navBar.classList.add("nav__fixed");
+//     if (!entry.isIntersecting && entry.rootBounds.width <= 921) {
+//       // navTriggerBtn.classList.remove("hidden");
+//     }
+//   });
+// };
 const obsNavCB = function (entries, observer) {
   entries.forEach((entry) => {
     console.log(entry, navBar);
     if (entry.isIntersecting) {
       navBar.classList.remove("nav__fixed");
       navBar.classList.remove("nav__hide");
-      navTriggerBtn.classList.add("hidden");
+      // navTriggerBtn.classList.add("hidden");
     }
-    if (!entry.isIntersecting && entry.rootBounds.width < 576) {
-      navBar.classList.add("nav__hide");
-    }
-    if (!entry.isIntersecting && entry.rootBounds.width >= 576)
+    if (!entry.isIntersecting) {
       navBar.classList.add("nav__fixed");
-    if (!entry.isIntersecting && entry.rootBounds.width <= 921)
-      navTriggerBtn.classList.remove("hidden");
+    }
   });
 };
 
@@ -386,9 +431,13 @@ document
   .querySelector(".header__logo")
   .addEventListener("click", () => hero.scrollIntoView({ behavior: "smooth" }));
 
-navTriggerBtn.addEventListener("click", function (e) {
-  navBar.classList.toggle("nav__hide");
-  navBar.classList.toggle("nav__fixed");
+// navTriggerBtn.addEventListener("click", function (e) {
+//   navBar.classList.toggle("nav__hide");
+//   navBar.classList.toggle("nav__fixed");
+// });
+
+mobileNavBtn.addEventListener("click", function () {
+  header.classList.toggle("nav-open");
 });
 
 // **Bestseller slider** //
@@ -398,7 +447,26 @@ const slides = document.querySelectorAll(".product");
 
 const sliderContainer = document.querySelector(".slider");
 
-renderSlider(slides, sliderContainer, 1, containerL);
+const determineTranslateSlider = function () {
+  // former determineWidthSlider
+  if (window.innerWidth <= 859) return 90;
+  if (window.innerWidth <= 1155) return 100;
+  if (window.innerWidth >= 1537) return 120;
+  if (window.innerWidth >= 1155) return 102;
+};
+
+const determineFirstSlide = function () {
+  if (window.innerWidth <= 784) return 0;
+  if (window.innerWidth >= 784) return 1;
+};
+
+renderSlider(
+  slides,
+  sliderContainer,
+  determineFirstSlide(),
+  containerL,
+  determineTranslateSlider(),
+);
 
 // (function () {
 //   if (window.innerWidth <= 365) {

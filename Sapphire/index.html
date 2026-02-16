@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
@@ -47,6 +47,7 @@
     <link rel="icon" href="./img/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Cormorant+Garamond:wght@500;700&display=swap"
       rel="stylesheet"
@@ -54,6 +55,7 @@
 
     <link href="./general.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="queries.css" />
     <script
       defer
       type="module"
@@ -83,11 +85,20 @@
   <body>
     <header class="header">
       <nav class="nav__bar">
-        <img
-          src="./img/logoNB.webp"
-          class="logo header__logo"
-          alt="Sapphire Logo"
-        />
+        <button class="mobile-nav">
+          <ion-icon name="menu-sharp" class="icon open__mobile-nav"></ion-icon>
+          <ion-icon
+            name="close-sharp"
+            class="icon close__mobile-nav"
+          ></ion-icon>
+        </button>
+        <a href="#" class="logo-container">
+          <img
+            src="./img/logoNB.webp"
+            class="logo header__logo"
+            alt="Sapphire Logo"
+          />
+        </a>
         <ul class="nav__menu">
           <li class="nav__item">
             <a
@@ -207,15 +218,15 @@
             fetchpriority="high"
           />
           <div class="hero__title-1 text-shadow">
-            <h3 class="hero__title hero__heading text-in">
+            <h1 class="heading-primary hero__title-color text-in">
               Adorn Yourself With Meaning
-            </h3>
+            </h1>
             <p class="hero__subheading text-in">
               Jewelry that celebrates identity, beauty, and the moments that
               define you.
             </p>
             <button class="btn cta shadow text-in">
-              Explore Our Finest Selections
+              Explore Our Selection
             </button>
           </div>
         </div>
@@ -226,7 +237,7 @@
             alt="Women Jewelries"
           />
           <div class="hero__title-2 text-shadow">
-            <h3 class="hero__title text-in">Women</h3>
+            <h2 class="heading-secondary hero__title-color text-in">Women</h2>
           </div>
         </div>
         <div class="hero-img-3">
@@ -236,19 +247,21 @@
             alt="Men Jewelries"
           />
           <div class="hero__title-3 text-shadow">
-            <h3 class="hero__title text-in">Men</h3>
+            <h2 class="heading-secondary hero__title-color text-in">Men</h2>
           </div>
         </div>
       </div>
     </header>
 
     <section class="section__1">
-      <div class="container">
-        <div class="badges">
+      <div class="">
+        <div class="badges grid grid--4-cols">
           <div class="badge">
-            <ion-icon name="cube-outline" class="icon icon-box"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="cube-outline" class="icon icon-box"></ion-icon>
+            </div>
             <div class="badge__content">
-              <h4 class="badge__title">Insured Shipping</h4>
+              <h3 class="badge__title">Insured Shipping</h3>
               <p class="badge__description">
                 To protect your order, all purchases over $150 are shipped with
                 insurance from USPS or DHL
@@ -256,48 +269,75 @@
             </div>
           </div>
           <div class="badge">
-            <ion-icon name="card-outline" class="icon icon-card"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="card-outline" class="icon icon-card"></ion-icon>
+            </div>
             <div class="badge__content">
               <h4 class="badge__title">Secure Payments</h4>
+              <!-- <h4 class="badge__title">Feel safe when you shop with us</h4> -->
               <p class="badge__description">
-                Feel safe when you shop with us. Our payment transactions are
-                secure. We offer credit card payments and payment plans
+                <!-- Feel safe when you shop with us.  -->
+                Our payment transactions are secure. We offer credit card
+                payments and payment plans
               </p>
             </div>
           </div>
           <div class="badge">
-            <ion-icon name="heart" class="icon icon-heart"></ion-icon>
+            <div class="badge-box">
+              <ion-icon name="heart" class="icon icon-heart"></ion-icon>
+            </div>
             <div class="badge__content">
-              <h4 class="badge__title n">Always By Your Side</h4>
+              <h4 class="badge__title">Always By Your Side</h4>
               <p class="badge__description">
-                You are the reason we created Sapphire. We will always be here
-                to answer any questions and support you in your search for the
-                perfect piece
+                <!-- You are the reason we created Sapphire.-->
+                We will always be here to answer any questions and support you
+                in your search for the perfect piece
               </p>
             </div>
           </div>
           <div class="badge">
-            <ion-icon
-              name="shield-checkmark-outline"
-              class="icon icon-shield"
-            ></ion-icon>
+            <div class="badge-box">
+              <ion-icon
+                name="shield-checkmark-outline"
+                class="icon icon-shield"
+              ></ion-icon>
+            </div>
             <div class="badge__content">
               <h4 class="badge__title">Warranty</h4>
+              <!-- <h4 class="badge__title">We want you to buy in confidence</h4> -->
               <p class="badge__description">
-                We want you to buy in confidence. All of our jewelry is covered
-                by our one-year warranty with the option for an extended
-                three-year warranty
+                <!-- We want you to buy in confidence. -->
+                All of our jewelry is covered by our one-year warranty with the
+                option for an extended three-year warranty
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section section__2" id="section__2">
+    <!-- 
+- Changed the section's style: margin: 0; padding: 9.6rem 0; CHECKED
+- FOR BESTSELELRS: Remove any container width from the section__main (container-L) 
+- Remove section__main paddings
+- Class "products" check height
+-->
+    <!-- <section class="section section__2" id="section__2">
       <div class="section__header">
         <h3 class="section__header-title text-in">Bestsellers</h3>
         <p class="section__header-description">The VIPs of our selection</p>
+      </div>
+      <div class="section__main container-L">
+        <div class="slider">
+          <div class="products"></div>
+        </div>
+      </div>
+    </section> -->
+    <section class="section section__2" id="section__2">
+      <div class="section__header margin-bottom--none">
+        <div class="container">
+          <h3 class="section__header-title text-in">Bestsellers</h3>
+          <p class="section__header-description">The VIPs of our selection</p>
+        </div>
       </div>
       <div class="section__main container-L">
         <div class="slider">
@@ -308,13 +348,18 @@
 
     <section class="section section__3" id="section__3">
       <div class="section__header">
-        <h3 class="section__header-title text-in">Our Selection</h3>
-        <p class="section__header-description">
-          Take a glance through our exclusive products and choose your
-          masterpiece
-        </p>
+        <div class="container">
+          <h3 class="section__header-title text-in">Our Selection</h3>
+          <p class="section__header-description">
+            Take a glance through our exclusive products and choose your
+            masterpiece
+          </p>
+        </div>
       </div>
-      <div class="section__main container autofit-grid categories">
+
+      <div
+        class="section__main container grid grid--3-cols categories grid--center-items"
+      >
         <!-- <div class="category">
           <img
             src="./img/ring.webp"
@@ -330,10 +375,12 @@
 
     <section class="section section__4" id="section__4">
       <div class="section__header">
-        <h3 class="section__header-title text-in">About Us</h3>
-        <p class="section__header-description">Get to know us</p>
+        <div class="container">
+          <h3 class="section__header-title text-in">About Us</h3>
+          <p class="section__header-description">Get to know us</p>
+        </div>
       </div>
-      <div class="section__main about-us autofit-grid">
+      <div class="section__main about-us grid grid--2-cols">
         <div class="about-us--text">
           <h4 class="about-us--title text-in">Redefining Modern Luxury</h4>
           <p class="about-us--description">
@@ -428,36 +475,47 @@
       </div>
     </footer>
     <div class="overlay hidden"></div>
-    <button class="btn nav__handler hidden">&#9776;</button>
+    <!-- <button class="btn nav__handler hidden">&#9776;</button> -->
+    <button class="btn-to-top">
+      <a href="#" class="link-to-top"
+        ><ion-icon name="chevron-up-outline" class="icon-to-top"></ion-icon
+      ></a>
+    </button>
     <div class="error fade-in"></div>
     <div class="modal fade-in">
-      <p class="modal__error hidden">*Please fill all the fields!*</p>
-      <span class="close__modal">x</span>
+      <!-- <p class="modal__error hidden">*Please fill all the fields!*</p> -->
+      <button class="close__modal">
+        <ion-icon name="close-outline" class="close-icon"></ion-icon>
+      </button>
       <p class="contact__title">Contact Us</p>
       <form class="contact__form" name="contact" method="POST" netlify>
         <input
           type="text"
           class="contact__input fs"
-          placeholder="Your Name"
+          placeholder="Your Name*"
           name="name"
+          required
         />
         <input
           type="email"
           class="contact__input"
           name="email"
-          placeholder="Your Email"
+          placeholder="Your Email*"
+          required
         />
         <input
           type="text"
           class="contact__input"
-          placeholder="Subject"
+          placeholder="Subject*"
           name="subject"
+          required
         />
         <textarea
           name="message"
           id="message"
-          placeholder="Message (180 characters)"
+          placeholder="Message (180 characters)*"
           maxlength="180"
+          required
           class="contact__input"
         ></textarea>
         <button type="submit" class="contact__submit">Send</button>
@@ -465,13 +523,3 @@
     </div>
   </body>
 </html>
-
-<!--
- <section class="section section__1 badge">
-      <div class="section__header">
-        <h3 class="section__header-title"></h3>
-        <p class="section__header-description"></p>
-      </div>
-      <div class="section__main container products"></div>
-    </section>
--->
