@@ -37,6 +37,7 @@ const navTriggerBtn = document.querySelector(".nav__handler");
 
 let search = [];
 let searchResult = [];
+
 const resetSearchResults = function () {
   if (searchResultList)
     [searchResultBar].forEach((el) =>
@@ -154,7 +155,7 @@ const searchingDB = function (input) {
     });
   }
 };
-searchInput.addEventListener("keydown", function (e) {
+searchInput.addEventListener("keyup", function (e) {
   // if (searchResultList)
   //   [searchResultList].forEach((el) =>
   //     el.querySelectorAll(".product").forEach((t) => t.remove())
