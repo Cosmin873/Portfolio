@@ -1,6 +1,6 @@
 // HELPER FUNCTIONS
 const capitalize = function (input) {
-  return input.at(0).toUpperCase() + input.slice(1);
+  return input[0].toUpperCase() + input.slice(1);
 };
 // // const stars = document.querySelectorAll(".star");
 
