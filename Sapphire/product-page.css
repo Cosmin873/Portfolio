@@ -567,9 +567,9 @@ Large desktops: 1200px
 }
 
 @media (max-width: 830px) {
-  .nav__bar {
+  /* .nav__bar {
     padding: 2rem 8rem 4rem 8rem;
-  }
+  } */
   .section__header-title {
     text-align: center;
   }
@@ -628,12 +628,12 @@ Large desktops: 1200px
 }
 
 @media (max-width: 928px) {
-  .header__logo {
+  /* .header__logo {
     width: 14rem;
-  }
-  .nav__bar {
+  } */
+  /* .nav__bar {
     justify-content: center;
-  }
+  } */
 }
 
 @media (min-width: 992px) {
