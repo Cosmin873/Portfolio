@@ -310,7 +310,7 @@ a {
   justify-content: space-between;
 
   max-width: 100%;
-  transition: all 1s;
+  transition: all 0.3s linear;
 }
 
 .nav__menu {

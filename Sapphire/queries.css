@@ -228,32 +228,27 @@
 
   .nav__menu {
     flex-direction: column;
-    gap: 0;
-
-    /* margin-top:not(:last-child): -5rem; */
+    gap: 6rem;
 
     opacity: 0;
     height: 0;
-    z-index: -10;
-    pointer-events: none;
-    visibility: hidden;
-    position: fixed;
-    top: 0;
+    /* z-index: -10; */
+    /* pointer-events: none; */
+    /* visibility: hidden; */
 
-    transition: all 1s;
-  }
-
-  .nav-open .nav__menu {
-    opacity: 1;
-    /* height: 100%; */
-    z-index: 99;
-    pointer-events: all;
-    visibility: visible;
-    gap: 6rem;
     position: fixed;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* transition: all 0.3s linear; */
+  }
+
+  .nav-open .nav__menu {
+    opacity: 1;
+    height: 100%;
+    /* z-index: 99; */
+    /* pointer-events: all; */
+    /* visibility: visible; */
   }
 
   /* .nav-open .nav__item {
