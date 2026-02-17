@@ -87,7 +87,7 @@ let gallerySlide;
   productTitle.textContent = product.title;
   document.title = `${product.title} | Sapphire Jewelries`;
   productPrice.textContent = product.price;
-  productCategory.textContent = capitalize(product.category);
+  // productCategory.textContent = capitalize(product.category);
   tabContent.innerHTML = product.description;
   if (window.innerWidth >= 768) {
     renderHighlight(product, galleryGrid, "beforebegin");
