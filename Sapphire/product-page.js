@@ -31,7 +31,7 @@ const injectProductSchema = function (product) {
     "@type": "Product",
     name: product.title,
     image: product.url.map(
-      (img) => new URL(img, "https://sapphire-jewelries.netlify.app/").href
+      (img) => new URL(img, "https://sapphire-jewelries.netlify.app/").href,
     ),
     description: product.description || product.tag || "",
     sku: product.code,
@@ -59,7 +59,7 @@ const logo = document.querySelector(".logo");
 
 // PRODUCT ELEMENTS
 const productPresentation = document.querySelector(
-  ".product__page-presentation"
+  ".product__page-presentation",
 );
 const productTitle = document.querySelector(".product__page-title");
 const productCategory = document.querySelector(".category");
@@ -103,7 +103,7 @@ let gallerySlide;
       120,
       0,
       1,
-      false
+      false,
     );
     productPresentation.classList.add("product__page-presentation-S");
     gallery.classList.add("gallery-S");
@@ -139,7 +139,7 @@ quantityDecrement.addEventListener("click", () => {
 });
 
 closeModal.addEventListener("click", () =>
-  galleryModal.classList.add("fade-in")
+  galleryModal.classList.add("fade-in"),
 );
 // IMG ZOOM AND PAN
 // Source - https://stackoverflow.com/q
@@ -168,21 +168,27 @@ function imageZoom(container, img) {
 
 if (window.innerWidth >= 576) {
   highlightImg.addEventListener("click", () =>
-    galleryModal.classList.remove("fade-in")
+    galleryModal.classList.remove("fade-in"),
   );
   imageZoom(container, img);
 }
 
 // TABS
-console.log(product);
+
 tabsContainer.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("tab__btn")) return;
-  const type = e.target.dataset.type;
+  const element = e.target.closest(".tab__item");
+  if (!element) return;
+  console.log(e.target);
+  const type = element.querySelector(".tab__btn").dataset.type;
   const category = product.category;
 
   const content = product[type]
     ? product[type]
     : db[category]["category_info"][type];
+  // const content2 =
+  //   product[type] === undefined
+  //     ? db[category]["category_info"][type]
+  //     : product[type];
 
   document
     .querySelectorAll(".tab__item")
@@ -280,11 +286,11 @@ class Reviews {
     starsContainer.addEventListener(
       "mouseenter",
       this.#mouseOver.bind(this),
-      true
+      true,
     );
     starsContainer.addEventListener(
       "mouseleave",
-      this.#passiveState.bind(this)
+      this.#passiveState.bind(this),
     );
     starsContainer.addEventListener("click", this.#addReview.bind(this));
   }
