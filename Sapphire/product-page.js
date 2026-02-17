@@ -174,6 +174,7 @@ if (window.innerWidth >= 576) {
 }
 
 // TABS
+
 console.log(product);
 tabsContainer.addEventListener("click", function (e) {
   const element = e.target.closest(".tab__item");
