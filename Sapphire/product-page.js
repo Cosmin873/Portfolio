@@ -5,7 +5,7 @@ import {
   renderSlider,
 } from "./general-functions.js";
 import Database from "./db.js";
-// import { data } from "./db.js";
+import { data } from "./db.js";
 // const db = data.load();
 // console.log(db);
 // const product = JSON.parse(localStorage.getItem("product"));
@@ -21,7 +21,7 @@ if (!window.location.hash) window.location.pathname = "index.html";
 const id = window.location.hash.slice(1);
 const product = Database.findProduct(id);
 const db = JSON.parse(localStorage.getItem("sapphire-db"));
-
+console.log(Database, product);
 const injectProductSchema = function (product) {
   const script = document.createElement("script");
   script.type = "application/ld+json";
@@ -174,7 +174,7 @@ if (window.innerWidth >= 576) {
 }
 
 // TABS
-
+console.log(data);
 tabsContainer.addEventListener("click", function (e) {
   const element = e.target.closest(".tab__item");
   if (!element) return;
@@ -182,19 +182,18 @@ tabsContainer.addEventListener("click", function (e) {
   const type = element.querySelector(".tab__btn").dataset.type;
   const category = product.category;
 
-  const content = product[type]
+  // const content = product[type]
+  //   ? product[type]
+  //   : db[category]["category_info"][type];
+  const content2 = product[type]
     ? product[type]
-    : db[category]["category_info"][type];
-  // const content2 =
-  //   product[type] === undefined
-  //     ? db[category]["category_info"][type]
-  //     : product[type];
+    : data[category]["category_info"][type];
 
   document
     .querySelectorAll(".tab__item")
     .forEach((el) => el.classList.remove("tab-active"));
   e.target.closest(".tab__item").classList.add("tab-active");
-  tabContent.innerHTML = content;
+  tabContent.innerHTML = content2;
 });
 
 // REVIEW SYSTEM //
