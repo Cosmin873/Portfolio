@@ -232,9 +232,9 @@
 
     opacity: 0;
     height: 0;
-    /* z-index: -10; */
+    z-index: -10;
     /* pointer-events: none; */
-    /* visibility: hidden; */
+    visibility: hidden;
 
     position: fixed;
     top: 55%;
@@ -246,9 +246,9 @@
   .nav-open .nav__menu {
     opacity: 1;
     height: 100%;
-    /* z-index: 99; */
+    z-index: 99;
     /* pointer-events: all; */
-    /* visibility: visible; */
+    visibility: visible;
   }
 
   /* .nav-open .nav__item {
