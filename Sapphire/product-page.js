@@ -174,22 +174,6 @@ if (window.innerWidth >= 576) {
 }
 
 // TABS
-// console.log(product);
-// tabsContainer.addEventListener("click", function (e) {
-//   if (!e.target.classList.contains("tab__btn")) return;
-//   const type = e.target.dataset.type;
-//   const category = product.category;
-
-//   const content = product[type]
-//     ? product[type]
-//     : db[category]["category_info"][type];
-
-//   document
-//     .querySelectorAll(".tab__item")
-//     .forEach((el) => el.classList.remove("tab-active"));
-//   e.target.closest(".tab__item").classList.add("tab-active");
-//   tabContent.innerHTML = content;
-// });
 
 tabsContainer.addEventListener("click", function (e) {
   const element = e.target.closest(".tab__item");
