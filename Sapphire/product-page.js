@@ -181,10 +181,16 @@ tabsContainer.addEventListener("click", function (e) {
   console.log(e.target);
   const type = element.querySelector(".tab__btn").dataset.type;
   const category = product.category;
+  let content;
+  // const content = product[type]
+  //   ? product[type]
+  //   : db[category]["category_info"][type];
 
-  const content = product[type]
-    ? product[type]
-    : db[category]["category_info"][type];
+  if (product[type]) {
+    content = product[type];
+  } else {
+    content = db[category]["category_info"][type];
+  }
 
   console.log(content);
   document
