@@ -174,23 +174,17 @@ if (window.innerWidth >= 576) {
 }
 
 // TABS
-
+console.log(db[product.category]["category_info"]);
 tabsContainer.addEventListener("click", function (e) {
   const element = e.target.closest(".tab__item");
   if (!element) return;
   console.log(e.target);
   const type = element.querySelector(".tab__btn").dataset.type;
   const category = product.category;
-  let content;
-  // const content = product[type]
-  //   ? product[type]
-  //   : db[category]["category_info"][type];
-
-  if (product[type]) {
-    content = product[type];
-  } else {
-    content = db[category]["category_info"][type];
-  }
+  console.log(product, product.category, category);
+  const content = product[type]
+    ? product[type]
+    : db[category]["category_info"][type];
 
   console.log(content);
   document
